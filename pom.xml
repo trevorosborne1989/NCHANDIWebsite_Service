@@ -50,20 +50,25 @@
 	<dependency>
 		<groupId>com.h2database</groupId>
 		<artifactId>h2</artifactId>
+		<scope>runtime</scope>
 	</dependency>
     <dependency>
         <groupId>com.oracle</groupId>
         <artifactId>ojdbc8</artifactId>
         <version>12.2.0.1.0</version>
     </dependency>
-    <dependency>
-	    <groupId>gov.srs.spring.configuration</groupId>
-	    <artifactId>DataSourceConfiguration</artifactId>
-	    <version>2.0.7</version>
-  	</dependency>
 	<dependency>
 		<groupId>org.codehaus.janino</groupId>
 		<artifactId>janino</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-envers</artifactId>
+	</dependency>
+	<dependency>
+	    <groupId>org.projectlombok</groupId>
+	    <artifactId>lombok</artifactId>
+	    <scope>provided</scope>
 	</dependency>
 	<!-- Replacement for Swagger, Springfox, and our custom SwaggerConfig lib -->
 	<dependency>
