@@ -31,47 +31,47 @@ public class Facility {
 	private Boolean active;
 	
 	@Column(name = "ADDRESS") 
-	@Length(max = 32) 
+	@Length(max = 255) 
 	private String address;
 	
 	@Column(name = "ALERNATE_CONTACT_EMAIL") 
-	@Length(max = 32) 
+	@Length(max = 255) 
 	private String alternateContactEmail;
 	
 	@Column(name = "ALTERNATE_CONTACT_NAME") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String alternateContactName;
 	
 	@Column(name = "ALTERNATE_CONTACT_PHONE") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String alternateContactPhone;
 	
 	@Column(name = "CITY") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String city;
 	
 	@Column(name = "FACILITY_NAME") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String facilityName;
 	
 	@Column(name = "FACILITY_TYPE") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String facilityType;
 	
 	@Column(name = "MAIN_CONTACT_EMAIL") 
-	@Length(max = 32) 
+	@Length(max = 255) 
 	private String mainContactEmail;
 	
 	@Column(name = "MAIN_CONTACT_NAME") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String mainContactName;
 	
 	@Column(name = "MAIN_CONTACT_PHONE") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String mainContactPhone;
 	
 	@Column(name = "STATE") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String state;
 	
 	@Column(name = "WEBSITE") 
@@ -79,6 +79,6 @@ public class Facility {
 	private String website;
 	
 	@Column(name = "ZIP") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String zip;
 }

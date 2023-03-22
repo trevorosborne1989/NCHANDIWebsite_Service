@@ -28,7 +28,7 @@ public class Member {
 	private String id;
 	
 	@Column(name = "COMMITMENT") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String commitment;
 	
 	@Column(name = "EMAIL") 
@@ -36,19 +36,19 @@ public class Member {
 	private String email;
 	
 	@Column(name = "FIRST_NAME") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String firstName;
 	
 	@Column(name = "LAST_NAME") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String lastName;
 	
 	@Column(name = "PHONE") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String phone;
 	
 	@Column(name = "PREFERRED_CONTACT_METHOD") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String preferredContactMethod;
 	
 }

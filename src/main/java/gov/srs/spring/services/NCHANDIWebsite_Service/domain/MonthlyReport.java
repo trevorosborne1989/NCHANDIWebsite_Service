@@ -43,11 +43,11 @@ public class MonthlyReport {
 	private Date timestamp;
 	
 	@Column(name = "TITLE") 
-	@Length(max = 32) 
+	@Length(max = 255) 
 	private String title;
 	
 	@Column(name = "TYPE") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String type;
 	
 	@Column(name = "URL") 

@@ -1,5 +1,11 @@
+
+
 INSERT INTO MEMBER (COMMITMENT, FIRST_NAME) VALUES ('panel_member', 'michael');
 INSERT INTO MEMBER (COMMITMENT, FIRST_NAME) VALUES ('panel_member', 'trevor');
 INSERT INTO MEMBER (COMMITMENT, FIRST_NAME) VALUES ('panel_member', 'hew');
 INSERT INTO MEMBER (COMMITMENT, FIRST_NAME) VALUES ('panel_member', 'josh');
 INSERT INTO MEMBER (COMMITMENT, FIRST_NAME) VALUES ('panel_member', 'monica');
+
+
+
+

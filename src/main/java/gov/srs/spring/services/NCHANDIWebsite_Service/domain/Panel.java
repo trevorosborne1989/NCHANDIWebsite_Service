@@ -39,7 +39,7 @@ public class Panel {
 	private Boolean active;
 	
 	@Column(name = "DAY_OF_WEEK") 
-	@Length(max = 16) 
+	@Length(max = 255) 
 	private String dayOfWeek;
 	
 	@Column(name = "EVENT_TIME") 
