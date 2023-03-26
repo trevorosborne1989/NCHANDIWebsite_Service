@@ -28,8 +28,8 @@ public class GeneralResource {
 	@Length(max = 36)
 	private String id;
 	
-	@Column(name = "ORDER") 
-	private Integer order;
+	@Column(name = "THE_ORDER") 
+	private Integer theOrder;
 	
 	@Column(name = "TITLE") 
 	@Length(max = 255) 

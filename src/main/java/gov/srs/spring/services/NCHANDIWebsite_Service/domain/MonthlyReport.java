@@ -34,8 +34,8 @@ public class MonthlyReport {
 	@Column(name = "IS_ARCHIVE") 
 	private Boolean isArchive;
 	
-	@Column(name = "MONTH") 
-	private Integer month;
+	@Column(name = "MONTH_OF_YEAR") 
+	private Integer monthOfYear;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 	@Column(name = "TIMESTAMP")
@@ -46,9 +46,9 @@ public class MonthlyReport {
 	@Length(max = 255) 
 	private String title;
 	
-	@Column(name = "TYPE") 
+	@Column(name = "TYPE_OF_REPORT") 
 	@Length(max = 255) 
-	private String type;
+	private String typeOfReport;
 	
 	@Column(name = "URL") 
 	@Length(max = 255) 
