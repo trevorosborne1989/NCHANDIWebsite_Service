@@ -37,4 +37,36 @@ public class PanelMaterial {
 	@Column(name = "URL") 
 	@Length(max = 255) 
 	private String url;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Integer getTheOrder() {
+		return theOrder;
+	}
+
+	public void setTheOrder(Integer theOrder) {
+		this.theOrder = theOrder;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 }
