@@ -2,8 +2,8 @@ package gov.srs.spring.services.NCHANDIWebsite_Service.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import gov.srs.spring.services.NCHANDIWebsite_Service.domain.Admin;
+import gov.srs.spring.services.NCHANDIWebsite_Service.domain.Member;
 
-public interface MemberRepository extends JpaRepository<Admin, String> {
+public interface MemberRepository extends JpaRepository<Member, String> {
 
 }

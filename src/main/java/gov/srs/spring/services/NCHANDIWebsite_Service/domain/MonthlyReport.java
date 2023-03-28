@@ -53,4 +53,60 @@ public class MonthlyReport {
 	@Column(name = "URL") 
 	@Length(max = 255) 
 	private String url;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Boolean getIsArchive() {
+		return isArchive;
+	}
+
+	public void setIsArchive(Boolean isArchive) {
+		this.isArchive = isArchive;
+	}
+
+	public Integer getMonthOfYear() {
+		return monthOfYear;
+	}
+
+	public void setMonthOfYear(Integer monthOfYear) {
+		this.monthOfYear = monthOfYear;
+	}
+
+	public Date getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(Date timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getTypeOfReport() {
+		return typeOfReport;
+	}
+
+	public void setTypeOfReport(String typeOfReport) {
+		this.typeOfReport = typeOfReport;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 }
