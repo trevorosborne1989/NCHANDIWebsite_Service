@@ -31,7 +31,7 @@ public class MonthlyReportService {
 		} 
 	}
 
-	public MonthlyReport getMonthlyReporBytId(String monthlyReportId) {
+	public MonthlyReport getMonthlyReportById(String monthlyReportId) {
 		
 		MonthlyReport monthlyReport = monthlyReportRepo.findOne(monthlyReportId);
 		

@@ -60,5 +60,4 @@ public class AdminController {
 			HttpServletRequest request) {
 		adminService.deleteAdmin(adminId);
 	}
-
 }
