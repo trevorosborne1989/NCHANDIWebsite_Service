@@ -7,10 +7,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.stereotype.Service;
 
 import gov.srs.spring.services.NCHANDIWebsite_Service.domain.ArchivedReport;
 import gov.srs.spring.services.NCHANDIWebsite_Service.repositories.ArchivedReportRepository;
 
+@Service
 public class ArchivedReportService {
 
 	@Autowired
@@ -45,7 +47,7 @@ public class ArchivedReportService {
 		  return archivedReportRepo.save(archivedReport);
 	}
 	
-	public ArchivedReport updateAdmin(String archivedReportId, ArchivedReport archivedReport) {
+	public ArchivedReport updateArchivedReport(String archivedReportId, ArchivedReport archivedReport) {
 		  
 		ArchivedReport existingArchivedReport = archivedReportRepo.findOne(archivedReportId);
 		
@@ -58,7 +60,7 @@ public class ArchivedReportService {
 		  return archivedReportRepo.save(archivedReport);
 	 }
 	
-	public void deleteAdmin(String archivedReportId) {
+	public void deleteArchivedReport(String archivedReportId) {
 		
 		  ArchivedReport archivedReport = archivedReportRepo.findOne(archivedReportId);
 		
