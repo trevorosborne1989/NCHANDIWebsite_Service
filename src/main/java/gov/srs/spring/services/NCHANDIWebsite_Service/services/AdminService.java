@@ -1,6 +1,8 @@
 package gov.srs.spring.services.NCHANDIWebsite_Service.services;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,7 @@ public class AdminService {
 	@Autowired
 	AdminRepository adminRepo;
 	
-//	TODO: 
+//	TODO:
 //	@Autowired
 //	AuthService authService;
 	
@@ -34,9 +36,9 @@ public class AdminService {
 			} 
 	  }
 	 
-	  public Admin getAdminById(String adminId) {
+	  public Optional<Admin> getAdminById(String adminId) {
 	    	
-			Admin admin = adminRepo.findOne(adminId);
+			Optional<Admin> admin = adminRepo.findById(adminId);
 			
 			if (admin == null) {
 				throw new ResourceNotFoundException("Admin with ID:" + adminId + " not found.");
@@ -52,7 +54,7 @@ public class AdminService {
 	  
 	  public Admin updateAdmin(String adminId, Admin admin) {
 		  
-		  Admin existingAdmin = adminRepo.findOne(adminId);
+		  Optional<Admin> existingAdmin = adminRepo.findById(adminId);
 		  
 		  if (!admin.getId().equals(adminId)) {
 				throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
@@ -65,12 +67,12 @@ public class AdminService {
 	  
 	  public void deleteAdmin(String adminId) {
 		  
-		  Admin admin = adminRepo.findOne(adminId);
+		  Optional<Admin> admin = adminRepo.findById(adminId);
 		  
 		  if (admin == null) {
 			  throw new ResourceNotFoundException("Admin with ID:" + adminId + " not found.");
 		  }
 		  
-		  adminRepo.delete(admin);
+		  adminRepo.delete(admin.get());
 	  }
 }

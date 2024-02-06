@@ -1,6 +1,7 @@
 package gov.srs.spring.services.NCHANDIWebsite_Service.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +32,9 @@ public class PanelMaterialService {
 		} 
 	}
 
-	public PanelMaterial getPanelMaterialById(String panelMaterialId) {
+	public Optional<PanelMaterial> getPanelMaterialById(String panelMaterialId) {
 		
-		PanelMaterial panelMaterial = panelMaterialRepo.findOne(panelMaterialId);
+		Optional<PanelMaterial> panelMaterial = panelMaterialRepo.findById(panelMaterialId);
 		
 		if (panelMaterial == null) {
 			throw new ResourceNotFoundException("PanelMaterial with ID:" + panelMaterialId + " not found.");
@@ -49,7 +50,7 @@ public class PanelMaterialService {
 
 	public PanelMaterial updatePanelMaterial(String panelMaterialId, PanelMaterial panelMaterial) {
 	  
-	  PanelMaterial existingPanelMaterial = panelMaterialRepo.findOne(panelMaterialId);
+	  Optional<PanelMaterial> existingPanelMaterial = panelMaterialRepo.findById(panelMaterialId);
 	  
 	  if (!panelMaterial.getId().equals(panelMaterialId)) {
 			throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
@@ -62,12 +63,12 @@ public class PanelMaterialService {
 
 	public void deletePanelMaterial(String panelMaterialId) {
 	  
-	  PanelMaterial panelMaterial = panelMaterialRepo.findOne(panelMaterialId);
+	  Optional<PanelMaterial> panelMaterial = panelMaterialRepo.findById(panelMaterialId);
 	  
 	  if (panelMaterial == null) {
 		  throw new ResourceNotFoundException("PanelMaterial with ID:" + panelMaterialId + " not found.");
 	  }
 	  
-	  panelMaterialRepo.delete(panelMaterial);
+	  panelMaterialRepo.delete(panelMaterial.get());
 	}
 }

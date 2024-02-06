@@ -1,6 +1,7 @@
 package gov.srs.spring.services.NCHANDIWebsite_Service.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +32,9 @@ public class PendingService {
 		} 
 	}
 
-	public Pending getPendingById(String pendingId) {
+	public Optional<Pending> getPendingById(String pendingId) {
 		
-		Pending pending = pendingRepo.findOne(pendingId);
+		Optional<Pending> pending = pendingRepo.findById(pendingId);
 		
 		if (pending == null) {
 			throw new ResourceNotFoundException("Pending with ID:" + pendingId + " not found.");
@@ -49,7 +50,7 @@ public class PendingService {
 
 	public Pending updatePending(String pendingId, Pending pending) {
 	  
-	  Pending existingPending = pendingRepo.findOne(pendingId);
+	  Optional<Pending> existingPending = pendingRepo.findById(pendingId);
 	  
 	  if (!pending.getId().equals(pendingId)) {
 			throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
@@ -62,12 +63,12 @@ public class PendingService {
 
 	public void deletePending(String pendingId) {
 	  
-	  Pending pending = pendingRepo.findOne(pendingId);
+	  Optional<Pending> pending = pendingRepo.findById(pendingId);
 	  
 	  if (pending == null) {
 		  throw new ResourceNotFoundException("Pending with ID:" + pendingId + " not found.");
 	  }
 	  
-	  pendingRepo.delete(pending);
+	  pendingRepo.delete(pending.get());
 	}
 }

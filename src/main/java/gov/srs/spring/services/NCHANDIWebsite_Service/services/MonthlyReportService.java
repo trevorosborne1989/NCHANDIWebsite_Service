@@ -1,6 +1,7 @@
 package gov.srs.spring.services.NCHANDIWebsite_Service.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +32,9 @@ public class MonthlyReportService {
 		} 
 	}
 
-	public MonthlyReport getMonthlyReportById(String monthlyReportId) {
+	public Optional<MonthlyReport> getMonthlyReportById(String monthlyReportId) {
 		
-		MonthlyReport monthlyReport = monthlyReportRepo.findOne(monthlyReportId);
+		Optional<MonthlyReport> monthlyReport = monthlyReportRepo.findById(monthlyReportId);
 		
 		if (monthlyReport == null) {
 			throw new ResourceNotFoundException("MonthlyReport with ID:" + monthlyReportId + " not found.");
@@ -49,7 +50,7 @@ public class MonthlyReportService {
 
 	public MonthlyReport updateMonthlyReport(String monthlyReportId, MonthlyReport monthlyReport) {
 	  
-	  MonthlyReport existingMonthlyReport = monthlyReportRepo.findOne(monthlyReportId);
+	  Optional<MonthlyReport> existingMonthlyReport = monthlyReportRepo.findById(monthlyReportId);
 	  
 	  if (!monthlyReport.getId().equals(monthlyReportId)) {
 			throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
@@ -62,12 +63,12 @@ public class MonthlyReportService {
 
 	public void deleteMonthlyReport(String monthlyReportId) {
 	  
-	  MonthlyReport monthlyReport = monthlyReportRepo.findOne(monthlyReportId);
+	  Optional<MonthlyReport> monthlyReport = monthlyReportRepo.findById(monthlyReportId);
 	  
 	  if (monthlyReport == null) {
 		  throw new ResourceNotFoundException("MonthlyReport with ID:" + monthlyReportId + " not found.");
 	  }
 	  
-	  monthlyReportRepo.delete(monthlyReport);
+	  monthlyReportRepo.delete(monthlyReport.get());
 	}
 }

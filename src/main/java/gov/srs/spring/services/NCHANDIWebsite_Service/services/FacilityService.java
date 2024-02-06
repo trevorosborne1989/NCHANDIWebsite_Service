@@ -1,6 +1,7 @@
 package gov.srs.spring.services.NCHANDIWebsite_Service.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,9 +43,9 @@ public class FacilityService {
 		} 
 	}
 
-	public Facility getFacilityById(String facilityId) {
+	public Optional<Facility> getFacilityById(String facilityId) {
 		
-		Facility facility = facilityRepo.findOne(facilityId);
+		Optional<Facility> facility = facilityRepo.findById(facilityId);
 		
 		if (facility == null) {
 			throw new ResourceNotFoundException("Facility with ID:" + facilityId + " not found.");
@@ -60,7 +61,7 @@ public class FacilityService {
 
 	public Facility updateFacility(String facilityId, Facility facility) {
 	  
-	  Facility existingFacility = facilityRepo.findOne(facilityId);
+	  Optional<Facility> existingFacility = facilityRepo.findById(facilityId);
 	  
 	  if (!facility.getId().equals(facilityId)) {
 			throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
@@ -73,13 +74,13 @@ public class FacilityService {
 
 	public void deleteFacility(String facilityId) {
 	  
-	  Facility facility = facilityRepo.findOne(facilityId);
+	  Optional<Facility> facility = facilityRepo.findById(facilityId);
 	  
 	  if (facility == null) {
 		  throw new ResourceNotFoundException("Facility with ID:" + facilityId + " not found.");
 	  }
 	  
-	  facilityRepo.delete(facility);
+	  facilityRepo.delete(facility.get());
 	}
 	
 }

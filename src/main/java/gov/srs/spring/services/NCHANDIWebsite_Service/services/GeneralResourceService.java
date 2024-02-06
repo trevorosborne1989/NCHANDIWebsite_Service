@@ -1,6 +1,7 @@
 package gov.srs.spring.services.NCHANDIWebsite_Service.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +32,9 @@ public class GeneralResourceService {
 		} 
 	}
 
-	public GeneralResource getGeneralResourceById(String generalResourceId) {
+	public Optional<GeneralResource> getGeneralResourceById(String generalResourceId) {
 		
-		GeneralResource generalResource = generalResourceRepo.findOne(generalResourceId);
+		Optional<GeneralResource> generalResource = generalResourceRepo.findById(generalResourceId);
 		
 		if (generalResource == null) {
 			throw new ResourceNotFoundException("GeneralResource with ID:" + generalResourceId + " not found.");
@@ -49,7 +50,7 @@ public class GeneralResourceService {
 
 	public GeneralResource updateGeneralResource(String generalResourceId, GeneralResource generalResource) {
 	  
-	  GeneralResource existingGeneralResource = generalResourceRepo.findOne(generalResourceId);
+	  Optional<GeneralResource> existingGeneralResource = generalResourceRepo.findById(generalResourceId);
 	  
 	  if (!generalResource.getId().equals(generalResourceId)) {
 			throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
@@ -62,12 +63,12 @@ public class GeneralResourceService {
 
 	public void deleteGeneralResource(String generalResourceId) {
 	  
-	  GeneralResource generalResource = generalResourceRepo.findOne(generalResourceId);
+	  Optional<GeneralResource> generalResource = generalResourceRepo.findById(generalResourceId);
 	  
 	  if (generalResource == null) {
 		  throw new ResourceNotFoundException("GeneralResource with ID:" + generalResourceId + " not found.");
 	  }
 	  
-	  generalResourceRepo.delete(generalResource);
+	  generalResourceRepo.delete(generalResource.get());
 	}
 }

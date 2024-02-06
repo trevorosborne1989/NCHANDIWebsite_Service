@@ -1,6 +1,7 @@
 package gov.srs.spring.services.NCHANDIWebsite_Service.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +32,9 @@ public class ArchivedReportService {
 		}
 	}
 	
-	public ArchivedReport getArchivedReportById(String archivedReportId) {
+	public Optional<ArchivedReport> getArchivedReportById(String archivedReportId) {
     	
-		ArchivedReport archivedReport = archivedReportRepo.findOne(archivedReportId);
+		Optional<ArchivedReport> archivedReport = archivedReportRepo.findById(archivedReportId);
 		
 		if (archivedReport == null) {
 			throw new ResourceNotFoundException("Admin with ID:" + archivedReportId + " not found.");
@@ -49,7 +50,7 @@ public class ArchivedReportService {
 	
 	public ArchivedReport updateArchivedReport(String archivedReportId, ArchivedReport archivedReport) {
 		  
-		ArchivedReport existingArchivedReport = archivedReportRepo.findOne(archivedReportId);
+		Optional<ArchivedReport> existingArchivedReport = archivedReportRepo.findById(archivedReportId);
 		
 		  if (!archivedReport.getId().equals(archivedReportId)) {
 				throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
@@ -62,13 +63,13 @@ public class ArchivedReportService {
 	
 	public void deleteArchivedReport(String archivedReportId) {
 		
-		  ArchivedReport archivedReport = archivedReportRepo.findOne(archivedReportId);
+		  Optional<ArchivedReport> archivedReport = archivedReportRepo.findById(archivedReportId);
 		
 		  if (archivedReport == null) {
 			  throw new ResourceNotFoundException("Admin with ID:" + archivedReportId + " not found.");
 		  }
 		  
-		  archivedReportRepo.delete(archivedReport);
+		  archivedReportRepo.delete(archivedReport.get());
 	 }
 	
 }
