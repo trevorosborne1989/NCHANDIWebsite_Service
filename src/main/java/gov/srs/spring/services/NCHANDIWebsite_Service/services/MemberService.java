@@ -1,6 +1,7 @@
 package gov.srs.spring.services.NCHANDIWebsite_Service.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +32,9 @@ public class MemberService {
 		} 
 	}
 
-	public Member getMemberById(String memberId) {
+	public Optional<Member> getMemberById(String memberId) {
 		
-		Member member = memberRepo.findOne(memberId);
+		Optional<Member> member = memberRepo.findById(memberId);
 		
 		if (member == null) {
 			throw new ResourceNotFoundException("Member with ID:" + memberId + " not found.");
@@ -49,7 +50,7 @@ public class MemberService {
 
 	public Member updateMember(String memberId, Member member) {
 	  
-	  Member existingMember = memberRepo.findOne(memberId);
+	  Optional<Member> existingMember = memberRepo.findById(memberId);
 	  
 	  if (!member.getId().equals(memberId)) {
 			throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
@@ -62,12 +63,12 @@ public class MemberService {
 
 	public void deleteMember(String memberId) {
 	  
-	  Member member = memberRepo.findOne(memberId);
+	  Optional<Member> member = memberRepo.findById(memberId);
 	  
 	  if (member == null) {
 		  throw new ResourceNotFoundException("Member with ID:" + memberId + " not found.");
 	  }
 	  
-	  memberRepo.delete(member);
+	  memberRepo.delete(member.get());
 	}
 }

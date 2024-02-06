@@ -1,8 +1,9 @@
 package gov.srs.spring.services.NCHANDIWebsite_Service.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class GeneralResourceController {
 	}
 
 	@RequestMapping(value = "/general-resources/{generalResourceId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public GeneralResource getGeneralResourceById(
+	public Optional<GeneralResource> getGeneralResourceById(
 			@PathVariable String generalResourceId,
 			HttpServletRequest request) {
 		return generalResourceService.getGeneralResourceById(generalResourceId);

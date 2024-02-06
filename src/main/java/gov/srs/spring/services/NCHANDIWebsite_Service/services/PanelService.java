@@ -1,6 +1,7 @@
 package gov.srs.spring.services.NCHANDIWebsite_Service.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,9 +47,9 @@ public class PanelService {
 		 } 
 	 }
 	 
-	 public Panel getPanelById(String panelId) {
+	 public Optional<Panel> getPanelById(String panelId) {
 	    	
-			Panel panel = panelRepo.findOne(panelId);
+			Optional<Panel> panel = panelRepo.findById(panelId);
 			
 			if (panel == null) {
 				throw new ResourceNotFoundException("Panel with ID:" + panelId + " not found.");
@@ -63,7 +64,7 @@ public class PanelService {
 	  
 	  public Panel updatePanel(String panelId, Panel panel) {
 		  
-		  Panel existingPanel = panelRepo.findOne(panelId);
+		  Optional<Panel> existingPanel = panelRepo.findById(panelId);
 		  
 		  if (!panel.getId().equals(panelId)) {
 				throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
@@ -76,12 +77,12 @@ public class PanelService {
 	  
 	  public void deletePanel(String panelId) {
 		  
-		  Panel panel = panelRepo.findOne(panelId);
+		  Optional<Panel> panel = panelRepo.findById(panelId);
 		  
 		  if (panel == null) {
 			  throw new ResourceNotFoundException("Panel with ID:" + panelId + " not found.");
 		  }
 		  
-		  panelRepo.delete(panel);
+		  panelRepo.delete(panel.get());
 	  }
 }

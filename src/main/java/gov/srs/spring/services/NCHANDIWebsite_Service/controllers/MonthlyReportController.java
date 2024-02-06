@@ -1,8 +1,9 @@
 package gov.srs.spring.services.NCHANDIWebsite_Service.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class MonthlyReportController {
 	}
 
 	@RequestMapping(value = "/monthly-reports/{monthlyReportId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public MonthlyReport getMonthlyReportsById(
+	public Optional<MonthlyReport> getMonthlyReportsById(
 			@PathVariable String monthlyReportId,
 			HttpServletRequest request) {
 		return monthlyReportService.getMonthlyReportById(monthlyReportId);

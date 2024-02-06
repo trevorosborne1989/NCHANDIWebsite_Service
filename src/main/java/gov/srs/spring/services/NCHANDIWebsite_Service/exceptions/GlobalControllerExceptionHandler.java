@@ -2,8 +2,8 @@ package gov.srs.spring.services.NCHANDIWebsite_Service.exceptions;
 
 import java.io.IOException;
 
-import javax.naming.AuthenticationException;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.security.auth.message.AuthException;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +33,7 @@ public class GlobalControllerExceptionHandler {
 	}
 	
 	@ExceptionHandler  //401 
-	void handleAuthenticationException(AuthenticationException a, HttpServletResponse response) throws IOException {
+	void handleAuthenticationException(AuthException a, HttpServletResponse response) throws IOException {
 		response.sendError(HttpStatus.UNAUTHORIZED.value());
 	}
 	
