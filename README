@@ -1,18 +1,7 @@
 This is an example of a basic Spring Boot RESTful web service.
 
-It contains all of the exception handling, OAuth authentication, JPA and other methodologies the SOA Team will use to 
+It contains all of the exception handling, OAuth authentication, JPA and other methodologies to 
 create web services.
 
 To build a WAR for this service, right click the application, Run As/Maven Install.  In the projects /target folder you will
 find the war file.  This can be deployed to any Tomcat server.
-
-PLEASE NOTE:
-This service uses the OAuthFilter dependency to perform authentication of the user.  It expects the AuthToken and AuthUserID request
-parameters to be present for every request.  
-
-If you wish to test locally and do not want to test the OAuthFilter, simply comment out the OAuthFilter dependency in
-your pom.xml file as well as any code that checks the "allowed_roles" session attribute.
-
-If you run the app as a Spring Boot App, the url is http://localhost:8080/bcpstatus
-
-If you run the app on a Tomcat instance, the url is http://localhost:8080/BasicWebService/bcpstatus
