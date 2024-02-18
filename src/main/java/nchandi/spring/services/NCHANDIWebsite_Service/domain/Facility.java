@@ -14,9 +14,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
+// Add this to the @Table annotation: , schema = "NCHANDI_WEBSITE"
 @Entity 
 @Audited
-@Table(name = "FACILITY", schema = "NCHANDI_WEBSITE") 
+@Table(name = "FACILITY") 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class Facility {
@@ -65,6 +66,22 @@ public class Facility {
 	@Column(name = "MAIN_CONTACT_NAME") 
 	@Length(max = 255) 
 	private String mainContactName;
+
+  @Column(name = "MAIN_CONTACT_PHONE") 
+	@Length(max = 255) 
+	private String mainContactPhone;
+	
+	@Column(name = "STATE") 
+	@Length(max = 255) 
+	private String state;
+	
+	@Column(name = "WEBSITE") 
+	@Length(max = 255) 
+	private String website;
+	
+	@Column(name = "ZIP") 
+	@Length(max = 255) 
+	private String zip;
 	
 	public String getId() {
 		return id;
@@ -185,22 +202,4 @@ public class Facility {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-
-	@Column(name = "MAIN_CONTACT_PHONE") 
-	@Length(max = 255) 
-	private String mainContactPhone;
-	
-	@Column(name = "STATE") 
-	@Length(max = 255) 
-	private String state;
-	
-	@Column(name = "WEBSITE") 
-	@Length(max = 255) 
-	private String website;
-	
-	@Column(name = "ZIP") 
-	@Length(max = 255) 
-	private String zip;
-	
-	
 }

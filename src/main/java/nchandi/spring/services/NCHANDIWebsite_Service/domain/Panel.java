@@ -22,9 +22,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
-@Entity 
+// Add this to the @Table annotation: , schema = "NCHANDI_WEBSITE"
+@Entity
 @Audited
-@Table(name = "PANEL", schema = "NCHANDI_WEBSITE") 
+@Table(name = "PANEL") 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class Panel {

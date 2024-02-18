@@ -12,9 +12,10 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity 
+// Add this to the @Table annotation: , schema = "NCHANDI_WEBSITE"
+@Entity
 @Audited
-@Table(name = "ADMIN", schema = "NCHANDI_WEBSITE") 
+@Table(name = "ADMIN") 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Admin {
 	@Id
@@ -44,7 +45,7 @@ public class Admin {
 	@Length(max = 255) 
 	private String phone;
 	
-	@Column(name = "PREFFERED_CONTACT_METHOD") 
+	@Column(name = "PREFERRED_CONTACT_METHOD") 
 	@Length(max = 255) 
 	private String preferredContactMethod;
 	

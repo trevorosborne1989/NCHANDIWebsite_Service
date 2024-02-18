@@ -14,9 +14,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
+// Add this to the @Table annotation: , schema = "NCHANDI_WEBSITE"
 @Entity 
 @Audited
-@Table(name = "ARCHIVED_REPORT", schema = "NCHANDI_WEBSITE") 
+@Table(name = "ARCHIVED_REPORT") 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class ArchivedReport {
