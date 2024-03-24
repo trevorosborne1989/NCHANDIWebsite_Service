@@ -35,11 +35,7 @@ public class PendingService {
 
 	public List<Pending> getPendings() {
 		List<Pending> pendings = pendingRepo.findAll();
-		if (pendings.size() > 0) {
 			return pendings;
-		} else {
-			throw new ResourceNotFoundException("No Records Found");
-		}
 	}
 
 	public Optional<Pending> getPendingById(String pendingId) {
@@ -95,12 +91,12 @@ public class PendingService {
 			updatedPanel.setPanelMember1(approvedPerson);
 		} else if (updatedPanel.getPanelMember2() == null) {
 			updatedPanel.setPanelMember2(approvedPerson);
-		} else if (updatedPanel.getPanelMember2() == null) {
-			updatedPanel.setPanelMember2(approvedPerson);
-		} else if (updatedPanel.getPanelMember2() == null) {
-			updatedPanel.setPanelMember2(approvedPerson);
-		} else if (updatedPanel.getPanelMember2() == null) {
-			updatedPanel.setPanelMember2(approvedPerson);
+		} else if (updatedPanel.getPanelMember3() == null) {
+			updatedPanel.setPanelMember3(approvedPerson);
+		} else if (updatedPanel.getPanelMember4() == null) {
+			updatedPanel.setPanelMember4(approvedPerson);
+		} else if (updatedPanel.getPanelMember5() == null) {
+			updatedPanel.setPanelMember5(approvedPerson);
 		} else {
 			throw new IllegalStateException("Panel with ID:" + approvedPanel.getId() + " is already at max for members (5)");
 		}
