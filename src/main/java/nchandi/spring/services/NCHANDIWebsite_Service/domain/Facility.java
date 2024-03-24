@@ -27,17 +27,42 @@ public class Facility {
 	@Column(name ="ID", unique = true, nullable = false) 
 	@Length(max = 36)
 	private String id;
+
+	@Column(name = "NAME") 
+	@Length(max = 255) 
+	private String name;
 	
-	@Column(name = "ACTIVE") 
-	private Boolean active;
+	@Column(name = "TYPE") 
+	@Length(max = 255) 
+	private String type;
 	
 	@Column(name = "ADDRESS") 
 	@Length(max = 255) 
 	private String address;
-	
-	@Column(name = "ALERNATE_CONTACT_EMAIL") 
+
+	@Column(name = "CITY") 
 	@Length(max = 255) 
-	private String alternateContactEmail;
+	private String city;
+
+	@Column(name = "ZIP") 
+	@Length(max = 255) 
+	private String zip;
+	
+	@Column(name = "STATE") 
+	@Length(max = 255) 
+	private String state;
+
+	@Column(name = "MAIN_CONTACT_NAME") 
+	@Length(max = 255) 
+	private String mainContactName;
+
+  @Column(name = "MAIN_CONTACT_PHONE") 
+	@Length(max = 255) 
+	private String mainContactPhone;
+
+	@Column(name = "MAIN_CONTACT_EMAIL") 
+	@Length(max = 255) 
+	private String mainContactEmail;
 	
 	@Column(name = "ALTERNATE_CONTACT_NAME") 
 	@Length(max = 255) 
@@ -46,42 +71,17 @@ public class Facility {
 	@Column(name = "ALTERNATE_CONTACT_PHONE") 
 	@Length(max = 255) 
 	private String alternateContactPhone;
-	
-	@Column(name = "CITY") 
-	@Length(max = 255) 
-	private String city;
-	
-	@Column(name = "FACILITY_NAME") 
-	@Length(max = 255) 
-	private String facilityName;
-	
-	@Column(name = "FACILITY_TYPE") 
-	@Length(max = 255) 
-	private String facilityType;
-	
-	@Column(name = "MAIN_CONTACT_EMAIL") 
-	@Length(max = 255) 
-	private String mainContactEmail;
-	
-	@Column(name = "MAIN_CONTACT_NAME") 
-	@Length(max = 255) 
-	private String mainContactName;
 
-  @Column(name = "MAIN_CONTACT_PHONE") 
+	@Column(name = "ALTERNATE_CONTACT_EMAIL") 
 	@Length(max = 255) 
-	private String mainContactPhone;
-	
-	@Column(name = "STATE") 
-	@Length(max = 255) 
-	private String state;
+	private String alternateContactEmail;
 	
 	@Column(name = "WEBSITE") 
 	@Length(max = 255) 
 	private String website;
-	
-	@Column(name = "ZIP") 
-	@Length(max = 255) 
-	private String zip;
+
+	@Column(name = "ACTIVE") 
+	private Boolean active;
 	
 	public String getId() {
 		return id;
@@ -139,20 +139,20 @@ public class Facility {
 		this.city = city;
 	}
 
-	public String getFacilityName() {
-		return facilityName;
+	public String name() {
+		return name;
 	}
 
-	public void setFacilityName(String facilityName) {
-		this.facilityName = facilityName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getFacilityType() {
-		return facilityType;
+		return type;
 	}
 
-	public void setFacilityType(String facilityType) {
-		this.facilityType = facilityType;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getMainContactEmail() {

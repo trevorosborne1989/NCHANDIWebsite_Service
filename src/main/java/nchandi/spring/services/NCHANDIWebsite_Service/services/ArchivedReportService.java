@@ -37,7 +37,7 @@ public class ArchivedReportService {
 		Optional<ArchivedReport> archivedReport = archivedReportRepo.findById(archivedReportId);
 		
 		if (archivedReport == null) {
-			throw new ResourceNotFoundException("Admin with ID:" + archivedReportId + " not found.");
+			throw new ResourceNotFoundException("ArchivedReport with ID:" + archivedReportId + " not found.");
 		}
 		
 		return archivedReport;
@@ -55,7 +55,7 @@ public class ArchivedReportService {
 		  if (!archivedReport.getId().equals(archivedReportId)) {
 				throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
 		  } else if (existingArchivedReport == null) {
-				throw new ResourceNotFoundException("Admin with ID:" + archivedReportId + " not found.");
+				throw new ResourceNotFoundException("ArchivedReport with ID:" + archivedReportId + " not found.");
 		  }
 			
 		  return archivedReportRepo.save(archivedReport);
@@ -66,7 +66,7 @@ public class ArchivedReportService {
 		  Optional<ArchivedReport> archivedReport = archivedReportRepo.findById(archivedReportId);
 		
 		  if (archivedReport == null) {
-			  throw new ResourceNotFoundException("Admin with ID:" + archivedReportId + " not found.");
+			  throw new ResourceNotFoundException("ArchivedReport with ID:" + archivedReportId + " not found.");
 		  }
 		  
 		  archivedReportRepo.delete(archivedReport.get());
