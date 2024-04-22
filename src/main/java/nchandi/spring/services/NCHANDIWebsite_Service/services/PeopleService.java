@@ -1,5 +1,6 @@
 package nchandi.spring.services.NCHANDIWebsite_Service.services;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.People;
 import nchandi.spring.services.NCHANDIWebsite_Service.repositories.PeopleRepository;
+import nchandi.spring.services.NCHANDIWebsite_Service.utils.PersonComparator;
 
 @Service
 public class PeopleService {
@@ -25,6 +27,7 @@ public class PeopleService {
 
 		List<People> people = peopleRepo.findAll();
 		if (people.size() > 0) {
+			Collections.sort(people, new PersonComparator());
 			return people;
 		} else {
 			throw new ResourceNotFoundException("No Records Found");

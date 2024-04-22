@@ -62,63 +62,54 @@ public class Panel implements Cloneable {
 	@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 	@NotFound(action = NotFoundAction.IGNORE)
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.ALL })
 	@JoinColumn(name = "FACILITY_ID", referencedColumnName = "ID")
 	private Facility facility;
 
 	@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 	@NotFound(action = NotFoundAction.IGNORE)
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.ALL })
 	@JoinColumn(name = "BOARD_CHAMPION_ID", referencedColumnName = "ID")
 	private People boardChampion;
 
 	@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 	@NotFound(action = NotFoundAction.IGNORE)
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.ALL })
 	@JoinColumn(name = "PANEL_COORDINATOR_ID", referencedColumnName = "ID")
 	private People panelCoordinator;
 
 	@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 	@NotFound(action = NotFoundAction.IGNORE)
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.ALL })
 	@JoinColumn(name = "PANEL_LEADER_ID", referencedColumnName = "ID")
 	private People panelLeader;
 
 	@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 	@NotFound(action = NotFoundAction.IGNORE)
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.ALL })
 	@JoinColumn(name = "PANEL_MEMBER_1_ID", referencedColumnName = "ID")
 	private People panelMember1;
 
 	@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 	@NotFound(action = NotFoundAction.IGNORE)
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.ALL })
 	@JoinColumn(name = "PANEL_MEMBER_2_ID", referencedColumnName = "ID")
 	private People panelMember2;
 
 	@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 	@NotFound(action = NotFoundAction.IGNORE)
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.ALL })
 	@JoinColumn(name = "PANEL_MEMBER_3_ID", referencedColumnName = "ID")
 	private People panelMember3;
 
 	@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 	@NotFound(action = NotFoundAction.IGNORE)
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.ALL })
 	@JoinColumn(name = "PANEL_MEMBER_4_ID", referencedColumnName = "ID")
 	private People panelMember4;
 
 	@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 	@NotFound(action = NotFoundAction.IGNORE)
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.ALL })
 	@JoinColumn(name = "PANEL_MEMBER_5_ID", referencedColumnName = "ID")
 	private People panelMember5;
 

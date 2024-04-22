@@ -15,74 +15,74 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 // Add this to the @Table annotation: , schema = "NCHANDI_WEBSITE"
-@Entity 
+@Entity
 @Audited
-@Table(name = "FACILITY") 
+@Table(name = "FACILITY")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class Facility {
 	@Id
-	@GeneratedValue(generator ="system-uuid")
-	@GenericGenerator(name ="system-uuid", strategy ="uuid2")
-	@Column(name ="ID", unique = true, nullable = false) 
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
+	@Column(name = "ID", unique = true, nullable = false)
 	@Length(max = 36)
 	private String id;
 
-	@Column(name = "NAME") 
-	@Length(max = 255) 
+	@Column(name = "NAME")
+	@Length(max = 255)
 	private String name;
-	
-	@Column(name = "TYPE") 
-	@Length(max = 255) 
+
+	@Column(name = "TYPE")
+	@Length(max = 255)
 	private String type;
-	
-	@Column(name = "ADDRESS") 
-	@Length(max = 255) 
+
+	@Column(name = "ADDRESS")
+	@Length(max = 255)
 	private String address;
 
-	@Column(name = "CITY") 
-	@Length(max = 255) 
+	@Column(name = "CITY")
+	@Length(max = 255)
 	private String city;
 
-	@Column(name = "ZIP") 
-	@Length(max = 255) 
+	@Column(name = "ZIP")
+	@Length(max = 255)
 	private String zip;
-	
-	@Column(name = "STATE") 
-	@Length(max = 255) 
+
+	@Column(name = "STATE")
+	@Length(max = 255)
 	private String state;
 
-	@Column(name = "MAIN_CONTACT_NAME") 
-	@Length(max = 255) 
+	@Column(name = "MAIN_CONTACT_NAME")
+	@Length(max = 255)
 	private String mainContactName;
 
-  @Column(name = "MAIN_CONTACT_PHONE") 
-	@Length(max = 255) 
+	@Column(name = "MAIN_CONTACT_PHONE")
+	@Length(max = 255)
 	private String mainContactPhone;
 
-	@Column(name = "MAIN_CONTACT_EMAIL") 
-	@Length(max = 255) 
+	@Column(name = "MAIN_CONTACT_EMAIL")
+	@Length(max = 255)
 	private String mainContactEmail;
-	
-	@Column(name = "ALTERNATE_CONTACT_NAME") 
-	@Length(max = 255) 
+
+	@Column(name = "ALTERNATE_CONTACT_NAME")
+	@Length(max = 255)
 	private String alternateContactName;
-	
-	@Column(name = "ALTERNATE_CONTACT_PHONE") 
-	@Length(max = 255) 
+
+	@Column(name = "ALTERNATE_CONTACT_PHONE")
+	@Length(max = 255)
 	private String alternateContactPhone;
 
-	@Column(name = "ALTERNATE_CONTACT_EMAIL") 
-	@Length(max = 255) 
+	@Column(name = "ALTERNATE_CONTACT_EMAIL")
+	@Length(max = 255)
 	private String alternateContactEmail;
-	
-	@Column(name = "WEBSITE") 
-	@Length(max = 255) 
+
+	@Column(name = "WEBSITE")
+	@Length(max = 255)
 	private String website;
 
-	@Column(name = "ACTIVE") 
+	@Column(name = "ACTIVE")
 	private Boolean active;
-	
+
 	public String getId() {
 		return id;
 	}

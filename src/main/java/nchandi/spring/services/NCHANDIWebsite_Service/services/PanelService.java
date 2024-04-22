@@ -22,9 +22,7 @@ public class PanelService {
   Logger logger = LoggerFactory.getLogger("nchandi.spring.services.NCHANDIWebsite_Service.services.PanelService");
 
   public List<Panel> getPanels() {
-
     List<Panel> panels = panelRepo.findAll();
-
     if (panels.size() > 0) {
       return panels;
     } else {
@@ -33,9 +31,7 @@ public class PanelService {
   }
 
   public List<Panel> getOpenPanels() {
-
-    List<Panel> panels = panelRepo.findByMarkAsMembersNeededTrue();
-
+    List<Panel> panels = panelRepo.findByMarkAsMembersNeededTrueAndActiveTrue();
     if (panels.size() > 0) {
       return panels;
     } else {
@@ -44,9 +40,7 @@ public class PanelService {
   }
 
   public Optional<Panel> getPanelById(String panelId) {
-
     Optional<Panel> panel = panelRepo.findById(panelId);
-
     if (panel == null) {
       throw new ResourceNotFoundException("Panel with ID:" + panelId + " not found.");
     }
@@ -54,31 +48,24 @@ public class PanelService {
   }
 
   public Panel savePanel(Panel panel) {
-
     return panelRepo.save(panel);
   }
 
   public Panel updatePanel(String panelId, Panel panel) {
-
     Optional<Panel> existingPanel = panelRepo.findById(panelId);
-
     if (!panel.getId().equals(panelId)) {
       throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
     } else if (existingPanel == null) {
       throw new ResourceNotFoundException("Panel with ID:" + panelId + " not found.");
     }
-
     return panelRepo.save(panel);
   }
 
   public void deletePanel(String panelId) {
-
     Optional<Panel> panel = panelRepo.findById(panelId);
-
     if (panel == null) {
       throw new ResourceNotFoundException("Panel with ID:" + panelId + " not found.");
     }
-
     panelRepo.delete(panel.get());
   }
 }
