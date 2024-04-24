@@ -82,7 +82,6 @@ public class PendingService {
 		approvedPerson.setPhone(pending.getPhone());
 		approvedPerson.setEmail(pending.getEmail());
 		approvedPerson.setPreferredContactMethod(pending.getPreferredContactMethod());
-		approvedPerson.setActive(true);
 		approvedPerson = peopleService.savePerson(approvedPerson);
 
 		Panel approvedPanel = panelService.getPanelById(pending.getPanelId()).get();

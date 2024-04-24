@@ -52,17 +52,17 @@ public class Facility {
 	@Length(max = 255)
 	private String state;
 
-	@Column(name = "MAIN_CONTACT_NAME")
+	@Column(name = "PRIMARY_CONTACT_NAME")
 	@Length(max = 255)
-	private String mainContactName;
+	private String primaryContactName;
 
-	@Column(name = "MAIN_CONTACT_PHONE")
+	@Column(name = "PRIMARY_CONTACT_PHONE")
 	@Length(max = 255)
-	private String mainContactPhone;
+	private String primaryContactPhone;
 
-	@Column(name = "MAIN_CONTACT_EMAIL")
+	@Column(name = "PRIMARY_CONTACT_EMAIL")
 	@Length(max = 255)
-	private String mainContactEmail;
+	private String primaryContactEmail;
 
 	@Column(name = "ALTERNATE_CONTACT_NAME")
 	@Length(max = 255)
@@ -156,27 +156,27 @@ public class Facility {
 	}
 
 	public String getMainContactEmail() {
-		return mainContactEmail;
+		return primaryContactEmail;
 	}
 
-	public void setMainContactEmail(String mainContactEmail) {
-		this.mainContactEmail = mainContactEmail;
+	public void setMainContactEmail(String primaryContactEmail) {
+		this.primaryContactEmail = primaryContactEmail;
 	}
 
 	public String getMainContactName() {
-		return mainContactName;
+		return primaryContactName;
 	}
 
-	public void setMainContactName(String mainContactName) {
-		this.mainContactName = mainContactName;
+	public void setMainContactName(String primaryContactName) {
+		this.primaryContactName = primaryContactName;
 	}
 
 	public String getMainContactPhone() {
-		return mainContactPhone;
+		return primaryContactPhone;
 	}
 
-	public void setMainContactPhone(String mainContactPhone) {
-		this.mainContactPhone = mainContactPhone;
+	public void setMainContactPhone(String primaryContactPhone) {
+		this.primaryContactPhone = primaryContactPhone;
 	}
 
 	public String getState() {

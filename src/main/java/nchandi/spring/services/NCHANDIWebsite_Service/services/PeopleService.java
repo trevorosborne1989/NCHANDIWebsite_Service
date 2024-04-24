@@ -55,7 +55,6 @@ public class PeopleService {
 	}
 
 	public People updatePerson(String personId, People people) {
-
 		Optional<People> existingPeople = peopleRepo.findById(personId);
 		if (!people.getId().equals(personId)) {
 			throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
