@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import jakarta.servlet.http.HttpServletRequest;
-import nchandi.spring.services.NCHANDIWebsite_Service.domain.Panel;
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.Pending;
 import nchandi.spring.services.NCHANDIWebsite_Service.services.PendingService;
 
