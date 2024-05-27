@@ -48,10 +48,6 @@ public class ResourceItem {
 	@Length(max = 255)
 	private String createdDate;
 
-	@Column(name = "URL")
-	@Length(max = 255)
-	private String url;
-
 	public String getId() {
 		return id;
 	}
@@ -100,11 +96,4 @@ public class ResourceItem {
 		this.createdDate = createdDate;
 	}
 
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
 }

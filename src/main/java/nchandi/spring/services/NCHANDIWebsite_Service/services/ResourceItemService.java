@@ -1,5 +1,7 @@
 package nchandi.spring.services.NCHANDIWebsite_Service.services;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +41,9 @@ public class ResourceItemService {
 	}
 
 	public ResourceItem saveResourceItem(ResourceItem resourceItem) {
+		Date currentDate = new Date();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		resourceItem.setCreatedDate(simpleDateFormat.format(currentDate));
 		return resourceItemRepository.save(resourceItem);
 	}
 
