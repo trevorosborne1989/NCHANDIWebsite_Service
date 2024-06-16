@@ -43,7 +43,9 @@ public class AttachmentService {
       throw new ResourceNotFoundException("ResourceItem with ID:" + resourceItemId + " not found.");
     }
     Attachment newAttachment = new Attachment();
-    newAttachment.setFileName(file.getOriginalFilename());
+    String fileName = file.getOriginalFilename();
+    String extPattern = "(?<!^)[.]" + ".*";
+    newAttachment.setFileName(fileName.replaceAll(extPattern, ""));
     newAttachment.setContentType(file.getContentType());
     newAttachment.setContent(file.getBytes());
     newAttachment.setParentResource(existingResourceItem.get());

@@ -349,54 +349,101 @@ insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) va
 
 --> RESOURCE_ITEM: Financial
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('25f49bd7-eedf-4875-b7d5-6fcb1ad9762e', 'January_Financial', 'in eleifend quam a odio in hac habitasse platea dictumst maecenas', 'Financial', 'January', '08/07/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('25f49bd7-eedf-4875-b7d5-6fcb1ad9762e', 'January_Financial', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('abc841cf-b54a-4588-a8ce-0eb3842f87f1', 'February_Financial', 'nulla nisl nunc nisl duis bibendum felis sed interdum venenatis', 'Financial', 'February', '06/29/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('abc841cf-b54a-4588-a8ce-0eb3842f87f1', 'February_Financial', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('f3be1e04-9f9d-4599-ab32-a6939f60d60f', 'March_Financial', 'semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel', 'Financial', 'March', '04/07/2024');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('f3be1e04-9f9d-4599-ab32-a6939f60d60f', 'March_Financial', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('6bddcb18-b32b-40d5-a80a-f051e6270f6e', 'April_Financial', 'vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere', 'Financial', 'April', '07/11/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('6bddcb18-b32b-40d5-a80a-f051e6270f6e', 'April_Financial', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('ef50e003-ea0d-4136-9db2-73d250355ead', 'May_Financial', 'lacus at turpis donec posuere metus vitae ipsum aliquam non mauris', 'Financial', 'May', '12/23/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('ef50e003-ea0d-4136-9db2-73d250355ead', 'May_Financial', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('57186d44-5602-4d0e-b929-a53f0400c6f2', 'June_Financial', 'praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio', 'Financial', 'June', '06/19/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('57186d44-5602-4d0e-b929-a53f0400c6f2', 'June_Financial', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('b549952e-abc5-4640-a0b9-adf6c820815a', 'July_Financial', 'accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas', 'Financial', 'July', '12/18/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('b549952e-abc5-4640-a0b9-adf6c820815a', 'July_Financial', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('fb0b7d3d-9a34-4b8e-a228-544676dbefde', 'August_Financial', 'in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit', 'Financial', 'August', '11/24/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('fb0b7d3d-9a34-4b8e-a228-544676dbefde', 'August_Financial', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('a539689a-39c3-45db-98da-08db08f8f498', 'September_Financial', 'felis donec semper sapien a libero nam dui proin leo', 'Financial', 'September', '07/17/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('a539689a-39c3-45db-98da-08db08f8f498', 'September_Financial', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('ab182041-b77d-4f68-a5c9-df45071c3a7d', 'October_Financial', 'eget nunc donec quis orci eget orci vehicula condimentum curabitur in', 'Financial', 'October', '02/16/2024');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('ab182041-b77d-4f68-a5c9-df45071c3a7d', 'October_Financial', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('f8a6bcea-7f7c-49d7-ba81-c106752e2dc7', 'November_Financial', 'sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac', 'Financial', 'November', '08/26/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('f8a6bcea-7f7c-49d7-ba81-c106752e2dc7', 'November_Financial', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('b410ef77-a60d-450e-89c0-9d4b6c66aba6', 'December_Financial', 'faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse', 'Financial', 'December', '02/07/2024');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('b410ef77-a60d-450e-89c0-9d4b6c66aba6', 'December_Financial', 'application/json', 'X/"');
 
 --> RESOURCE_ITEM: Minutes
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('fddaad3c-672f-48dd-a49f-8c223d76a931', 'February_Minutes', 'duis aliquam convallis nunc proin at turpis a pede posuere nonummy', 'Minutes', 'February', '12/24/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('fddaad3c-672f-48dd-a49f-8c223d76a931', 'February_Minutes', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('e86aec38-f529-4bed-8488-d5388cf59763', 'March_Minutes', 'elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum', 'Minutes', 'March', '07/31/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('e86aec38-f529-4bed-8488-d5388cf59763', 'March_Minutes', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('9367e32b-da31-465d-8001-64b4ab1bd9c1', 'April_Minutes', 'lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel', 'Minutes', 'April', '09/29/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('9367e32b-da31-465d-8001-64b4ab1bd9c1', 'April_Minutes', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('d2afece3-ba17-45de-9729-e93e3a8e5459', 'May_Minutes', 'lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus', 'Minutes', 'May', '08/11/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('d2afece3-ba17-45de-9729-e93e3a8e5459', 'May_Minutes', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('13df3ec5-4c55-4f0b-a362-3e5dbcebefbf', 'June_Minutes', 'lectus aliquam sit amet diam in magna bibendum imperdiet nullam', 'Minutes', 'June', '03/06/2024');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('13df3ec5-4c55-4f0b-a362-3e5dbcebefbf', 'June_Minutes', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('b2535b4b-1ee8-4ebe-a523-f0a200de47e2', 'July_Minutes', 'iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis', 'Minutes', 'July', '05/07/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('b2535b4b-1ee8-4ebe-a523-f0a200de47e2', 'July_Minutes', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('68f9ca56-8f31-42d5-835b-b3571fe49aac', 'August_Minutes', 'odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices', 'Minutes', 'August', '06/13/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('68f9ca56-8f31-42d5-835b-b3571fe49aac', 'August_Minutes', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('bf76bd2c-b30d-4ab5-a2c9-7ded73ea6195', 'September_Minutes', 'at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum', 'Minutes', 'September', '01/26/2024');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('bf76bd2c-b30d-4ab5-a2c9-7ded73ea6195', 'September_Minutes', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('eca1bda1-f7ed-4db3-b24c-760abfd75c82', 'October_Minutes', 'metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et', 'Minutes', 'October', '02/16/2024');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('eca1bda1-f7ed-4db3-b24c-760abfd75c82', 'October_Minutes', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('398aef5c-9fda-416b-b07e-7af63f498869', 'November_Minutes', 'ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin', 'Minutes', 'November', '07/14/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('398aef5c-9fda-416b-b07e-7af63f498869', 'November_Minutes', 'application/json', 'X/"');
 
 --> RESOURCE_ITEM: Panel Materials
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('deb74bc3-9b23-45bb-8387-b1bb6e09bf40', 'A Vision For You', 'sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit', 'Panel Material', 'December', '11/15/2023');
-insert into ATTACHMENT (PARENT_RESOURCE_ID, content) values ('deb74bc3-9b23-45bb-8387-b1bb6e09bf40', 'This is a sample pdf stream!');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('deb74bc3-9b23-45bb-8387-b1bb6e09bf40', 'A Vision For You', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('b4ba1e46-321b-46b8-a9bd-d7133d26b4c9', 'Coordinator''s Panel Report', 'purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio', 'Panel Material', 'December', '06/11/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('b4ba1e46-321b-46b8-a9bd-d7133d26b4c9', 'Coordinator''s Panel Report', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('59f25f5b-03d0-43a8-8b85-1aeac1402e1f', 'How It Works', 'vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio', 'Panel Material', 'December', '12/21/2023');
-insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('a087b362-46b6-476c-b2b3-4c65ae5bfc40', 'Meeting Guide Instructions', 'ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis', 'Panel Material', 'December', '02/12/2024');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('59f25f5b-03d0-43a8-8b85-1aeac1402e1f', 'How It Works', 'application/json', 'X/"');
+insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('a087b362-46b6-476c-b2b3-4c65ae512345', 'Meeting Guide Instructions', 'ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis', 'Panel Material', 'December', '02/12/2024');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('a087b362-46b6-476c-b2b3-4c65ae512345', 'Meeting Guide Instructions', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('9bf74a2a-95c8-41ce-8c6d-26161791ed70', 'More About Alcoholism', 'primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est', 'Panel Material', 'December', '06/14/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('9bf74a2a-95c8-41ce-8c6d-26161791ed70', 'More About Alcoholism', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('d80de880-2eb1-4c14-93c4-301bb0bb716e', 'Suggested Meeting Format', 'turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget', 'Panel Material', 'December', '07/01/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('d80de880-2eb1-4c14-93c4-301bb0bb716e', 'Suggested Meeting Format', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('b02556f5-e952-4b55-8089-521358969fb5', 'Twelve Traditions', 'morbi vel lectus in quam fringilla rhoncus mauris enim leo', 'Panel Material', 'December', '09/22/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('b02556f5-e952-4b55-8089-521358969fb5', 'Twelve Traditions', 'application/json', 'X/"');
 
 
 --> RESOURCE_ITEM: General Resources
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('1c9556b6-9d8c-4642-b056-ecec7f8cc9fa', 'Business Cards 10-page', 'et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur', 'General Resource', 'December', '05/09/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('1c9556b6-9d8c-4642-b056-ecec7f8cc9fa', 'Business Cards 10-page', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('4d6cc422-7635-4e7c-bd50-a7e72379d24f', 'Green Can Description', 'cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at', 'General Resource', 'December', '07/12/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('4d6cc422-7635-4e7c-bd50-a7e72379d24f', 'Green Can Description', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('53502d64-24d0-41a0-89be-01a931a79cf5', 'Green Can Label', 'odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est', 'General Resource', 'December', '08/29/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('53502d64-24d0-41a0-89be-01a931a79cf5', 'Green Can Label', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('6aa63f61-df7e-45f6-b017-da80e23477af', 'H&I Informational Brochure', 'dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper', 'General Resource', 'December', '06/05/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('6aa63f61-df7e-45f6-b017-da80e23477af', 'H&I Informational Brochure', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('7f9db8a5-3792-4b63-b784-c8f8272ae700', 'H&I Sign Up Sheet', 'id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in', 'General Resource', 'December', '03/13/2024');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('7f9db8a5-3792-4b63-b784-c8f8272ae700', 'H&I Sign Up Sheet', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('f88e6532-cb2d-4308-b6f2-0ec42b856b24', 'History of NCHandI', 'adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam', 'General Resource', 'December', '12/18/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('f88e6532-cb2d-4308-b6f2-0ec42b856b24', 'History of NCHandI', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('680c395c-6054-43f1-aa45-7e451614c659', 'North County H&I Policies and Guidelines', 'eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec', 'General Resource', 'December', '05/04/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('680c395c-6054-43f1-aa45-7e451614c659', 'North County H&I Policies and Guidelines', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('8e36bf6c-567c-4b9a-86ce-76c2752cf3dc', 'Orientation Checklist', 'risus auctor sed tristique in tempus sit amet sem fusce consequat', 'General Resource', 'December', '06/24/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('8e36bf6c-567c-4b9a-86ce-76c2752cf3dc', 'Orientation Checklist', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('55fe6ab6-a327-4317-a55c-89546fc95d01', 'Summer Service Fair Flyer', 'sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam', 'General Resource', 'December', '07/25/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('55fe6ab6-a327-4317-a55c-89546fc95d01', 'Summer Service Fair Flyer', 'application/json', 'X/"');
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('c6c01346-2afb-4050-8070-4862f748e251', 'Virtual Panel Flyer', 'mauris eget massa tempor convallis nulla neque libero convallis eget eleifend', 'General Resource', 'December', '01/04/2024');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('c6c01346-2afb-4050-8070-4862f748e251', 'Virtual Panel Flyer', 'application/json', 'X/"');
 
 --> RESOURCE_ITEM: Archived Reports
 insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('cac884db-3ae1-4a07-833f-1c2e03215277', '2024 Proposed Budget', 'potenti cras in purus eu magna vulputate luctus cum sociis natoque', 'Archived Report', 'December', '07/06/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('cac884db-3ae1-4a07-833f-1c2e03215277', '2024 Proposed Budget', 'application/json', 'X/"');
+insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('cac884db-3ae1-4a07-833f-1c2e03215111', '2023 Proposed Budget', 'potenti cras in purus eu magna vulputate luctus cum sociis natoque', 'Archived Report', 'December', '07/06/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('cac884db-3ae1-4a07-833f-1c2e03215111', '2023 Proposed Budget', 'application/json', 'X/"');
+insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('cac884db-3ae1-4a07-833f-1c2e03215113', 'NonProfit Articles', 'potenti cras in purus eu magna vulputate luctus cum sociis natoque', 'Archived Report', 'December', '07/06/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('cac884db-3ae1-4a07-833f-1c2e03215113', 'NonProfit Articles', 'application/json', 'X/"');
+insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('cac884db-3ae1-4a07-833f-1c2e03215114', 'Summer Service Fair Budget', 'potenti cras in purus eu magna vulputate luctus cum sociis natoque', 'Archived Report', 'December', '07/06/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('cac884db-3ae1-4a07-833f-1c2e03215114', 'Summer Service Fair Budget', 'application/json', 'X/"');
+insert into RESOURCE_ITEM (id, name, body, type, month_of_year, created_date) values ('cac884db-3ae1-4a07-833f-1c2e03215115', 'CoChair Duties', 'potenti cras in purus eu magna vulputate luctus cum sociis natoque', 'Archived Report', 'December', '07/06/2023');
+insert into ATTACHMENT (PARENT_RESOURCE_ID, file_name, content_type, content) values ('cac884db-3ae1-4a07-833f-1c2e03215115', 'CoChair Duties', 'application/json', 'X/"');
 
 --> Remove name input on the three pages. You can just use html to pull of the file name from the upload and strip off the file extension. You can than add this to the formik.values.name field. e.target.files.name

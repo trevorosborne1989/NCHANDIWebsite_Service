@@ -12,6 +12,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
+import nchandi.spring.services.NCHANDIWebsite_Service.domain.Attachment;
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.ResourceItem;
 import nchandi.spring.services.NCHANDIWebsite_Service.repositories.ResourceItemRepository;
 
@@ -20,6 +21,9 @@ public class ResourceItemService {
 
 	@Autowired
 	ResourceItemRepository resourceItemRepository;
+
+	@Autowired
+	AttachmentService attachmentService;
 
 	Logger logger = LoggerFactory.getLogger("nchandi.spring.services.NCHANDIWebsite_Service.services.ResourceItemService");
 
@@ -44,6 +48,10 @@ public class ResourceItemService {
 		Date currentDate = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		resourceItem.setCreatedDate(simpleDateFormat.format(currentDate));
+		List<ResourceItem> existingMonthAndType = resourceItemRepository.findByTypeAndMonthOfYear(resourceItem.getType(), resourceItem.getMonthOfYear());
+		if (!existingMonthAndType.isEmpty()) {
+			deleteResourceItem(existingMonthAndType.get(0).getId());
+		}
 		return resourceItemRepository.save(resourceItem);
 	}
 
@@ -61,6 +69,10 @@ public class ResourceItemService {
 		Optional<ResourceItem> resourceItem = resourceItemRepository.findById(resourceItemId);
 		if (resourceItem == null) {
 			throw new ResourceNotFoundException("ResourceItem with ID:" + resourceItemId + " not found.");
+		}
+		Optional<Attachment> attachment = attachmentService.getAttachmentById(resourceItemId);
+		if (attachment != null) {
+			attachmentService.deleteAttachment(resourceItemId);
 		}
 		resourceItemRepository.delete(resourceItem.get());
 	}
