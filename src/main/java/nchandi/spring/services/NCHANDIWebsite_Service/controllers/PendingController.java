@@ -58,4 +58,12 @@ public class PendingController {
 			HttpServletRequest request) {
 		pendingService.deletePending(pendingId);
 	}
+
+	@RequestMapping(value = "/pendings/{pendingId}/approve", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void appovePending(
+			@RequestBody Pending pending,
+			@PathVariable String pendingId,
+			HttpServletRequest request) throws CloneNotSupportedException {
+		pendingService.approvePending(pendingId, pending);
+	}
 }

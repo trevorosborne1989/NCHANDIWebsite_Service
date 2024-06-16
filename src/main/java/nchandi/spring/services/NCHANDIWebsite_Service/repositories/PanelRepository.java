@@ -8,5 +8,5 @@ import nchandi.spring.services.NCHANDIWebsite_Service.domain.Panel;
 
 public interface PanelRepository extends JpaRepository<Panel, String> {
 
-	List<Panel> findByMarkAsMembersNeededTrue();
+	List<Panel> findByMarkAsMembersNeededTrueAndActiveTrue();
 }
