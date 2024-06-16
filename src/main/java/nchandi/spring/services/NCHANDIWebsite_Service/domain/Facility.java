@@ -15,74 +15,74 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 // Add this to the @Table annotation: , schema = "NCHANDI_WEBSITE"
-@Entity 
+@Entity
 @Audited
-@Table(name = "FACILITY") 
+@Table(name = "FACILITY")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class Facility {
 	@Id
-	@GeneratedValue(generator ="system-uuid")
-	@GenericGenerator(name ="system-uuid", strategy ="uuid2")
-	@Column(name ="ID", unique = true, nullable = false) 
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
+	@Column(name = "ID", unique = true, nullable = false)
 	@Length(max = 36)
 	private String id;
-	
-	@Column(name = "ACTIVE") 
-	private Boolean active;
-	
-	@Column(name = "ADDRESS") 
-	@Length(max = 255) 
-	private String address;
-	
-	@Column(name = "ALERNATE_CONTACT_EMAIL") 
-	@Length(max = 255) 
-	private String alternateContactEmail;
-	
-	@Column(name = "ALTERNATE_CONTACT_NAME") 
-	@Length(max = 255) 
-	private String alternateContactName;
-	
-	@Column(name = "ALTERNATE_CONTACT_PHONE") 
-	@Length(max = 255) 
-	private String alternateContactPhone;
-	
-	@Column(name = "CITY") 
-	@Length(max = 255) 
-	private String city;
-	
-	@Column(name = "FACILITY_NAME") 
-	@Length(max = 255) 
-	private String facilityName;
-	
-	@Column(name = "FACILITY_TYPE") 
-	@Length(max = 255) 
-	private String facilityType;
-	
-	@Column(name = "MAIN_CONTACT_EMAIL") 
-	@Length(max = 255) 
-	private String mainContactEmail;
-	
-	@Column(name = "MAIN_CONTACT_NAME") 
-	@Length(max = 255) 
-	private String mainContactName;
 
-  @Column(name = "MAIN_CONTACT_PHONE") 
-	@Length(max = 255) 
-	private String mainContactPhone;
-	
-	@Column(name = "STATE") 
-	@Length(max = 255) 
-	private String state;
-	
-	@Column(name = "WEBSITE") 
-	@Length(max = 255) 
-	private String website;
-	
-	@Column(name = "ZIP") 
-	@Length(max = 255) 
+	@Column(name = "NAME")
+	@Length(max = 255)
+	private String name;
+
+	@Column(name = "TYPE")
+	@Length(max = 255)
+	private String type;
+
+	@Column(name = "ADDRESS")
+	@Length(max = 255)
+	private String address;
+
+	@Column(name = "CITY")
+	@Length(max = 255)
+	private String city;
+
+	@Column(name = "ZIP")
+	@Length(max = 255)
 	private String zip;
-	
+
+	@Column(name = "STATE")
+	@Length(max = 255)
+	private String state;
+
+	@Column(name = "PRIMARY_CONTACT_NAME")
+	@Length(max = 255)
+	private String primaryContactName;
+
+	@Column(name = "PRIMARY_CONTACT_PHONE")
+	@Length(max = 255)
+	private String primaryContactPhone;
+
+	@Column(name = "PRIMARY_CONTACT_EMAIL")
+	@Length(max = 255)
+	private String primaryContactEmail;
+
+	@Column(name = "ALTERNATE_CONTACT_NAME")
+	@Length(max = 255)
+	private String alternateContactName;
+
+	@Column(name = "ALTERNATE_CONTACT_PHONE")
+	@Length(max = 255)
+	private String alternateContactPhone;
+
+	@Column(name = "ALTERNATE_CONTACT_EMAIL")
+	@Length(max = 255)
+	private String alternateContactEmail;
+
+	@Column(name = "WEBSITE")
+	@Length(max = 255)
+	private String website;
+
+	@Column(name = "ACTIVE")
+	private Boolean active;
+
 	public String getId() {
 		return id;
 	}
@@ -139,44 +139,44 @@ public class Facility {
 		this.city = city;
 	}
 
-	public String getFacilityName() {
-		return facilityName;
+	public String name() {
+		return name;
 	}
 
-	public void setFacilityName(String facilityName) {
-		this.facilityName = facilityName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getFacilityType() {
-		return facilityType;
+		return type;
 	}
 
-	public void setFacilityType(String facilityType) {
-		this.facilityType = facilityType;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getMainContactEmail() {
-		return mainContactEmail;
+		return primaryContactEmail;
 	}
 
-	public void setMainContactEmail(String mainContactEmail) {
-		this.mainContactEmail = mainContactEmail;
+	public void setMainContactEmail(String primaryContactEmail) {
+		this.primaryContactEmail = primaryContactEmail;
 	}
 
 	public String getMainContactName() {
-		return mainContactName;
+		return primaryContactName;
 	}
 
-	public void setMainContactName(String mainContactName) {
-		this.mainContactName = mainContactName;
+	public void setMainContactName(String primaryContactName) {
+		this.primaryContactName = primaryContactName;
 	}
 
 	public String getMainContactPhone() {
-		return mainContactPhone;
+		return primaryContactPhone;
 	}
 
-	public void setMainContactPhone(String mainContactPhone) {
-		this.mainContactPhone = mainContactPhone;
+	public void setMainContactPhone(String primaryContactPhone) {
+		this.primaryContactPhone = primaryContactPhone;
 	}
 
 	public String getState() {
