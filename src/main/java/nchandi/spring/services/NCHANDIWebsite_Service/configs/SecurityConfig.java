@@ -50,8 +50,7 @@ public class SecurityConfig {
               antMatcher("/v3/**"),
               antMatcher("/h2-console/**"),
               antMatcher(HttpMethod.OPTIONS, "/**")).permitAll()
-            .requestMatchers(antMatcher(HttpMethod.GET, "/books")).permitAll()
-            .requestMatchers(antMatcher(HttpMethod.GET, "/books/**")).permitAll()
+            // .requestMatchers(antMatcher(HttpMethod.GET, "/books/**")).permitAll()
             .requestMatchers(antMatcher(HttpMethod.POST, "/people"))
               .hasAnyRole("Chair", "Co-Chair", "Librarian", "Technology", "Treasurer", "Facilities")
             .anyRequest().permitAll();
