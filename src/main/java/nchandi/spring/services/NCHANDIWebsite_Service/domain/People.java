@@ -49,20 +49,21 @@ public class People {
   @Length(max = 255)
   private String commitment;
 
+  @Column(name = "USERNAME")
+  @Length(max = 255)
+  private String username;
+
+  @Column(name = "PASSWORD")
+  @Length(max = 255)
+  private String password;
+
+
   public String getId() {
     return id;
   }
 
   public void setId(String id) {
     this.id = id;
-  }
-
-  public String getCommitment() {
-    return commitment;
-  }
-
-  public void setCommitment(String commitment) {
-    this.commitment = commitment;
   }
 
   public String getEmail() {
@@ -103,5 +104,29 @@ public class People {
 
   public void setPreferredContactMethod(String preferredContactMethod) {
     this.preferredContactMethod = preferredContactMethod;
+  }
+
+  public String getCommitment() {
+    return commitment;
+  }
+
+  public void setCommitment(String commitment) {
+    this.commitment = commitment;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
   }
 }
