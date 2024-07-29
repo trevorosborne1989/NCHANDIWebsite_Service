@@ -8,4 +8,6 @@ import nchandi.spring.services.NCHANDIWebsite_Service.domain.People;
 
 public interface PeopleRepository extends JpaRepository<People, String> {
   List<People> findByFirstNameAndLastName(String firstName, String lastName);
+
+  List<People> findByUsername(String username);
 }

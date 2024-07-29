@@ -11,9 +11,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-@Order(Ordered.HIGHEST_PRECEDENCE)
-public class CorsFilter implements Filter {
-  public CorsFilter() {
+@Order(Ordered.LOWEST_PRECEDENCE)
+public class ServiceCorsFilter implements Filter {
+  public ServiceCorsFilter() {
   }
 
   @Override
@@ -25,11 +25,10 @@ public class CorsFilter implements Filter {
       throws IOException, ServletException {
     HttpServletResponse response = (HttpServletResponse) res;
     HttpServletRequest request = (HttpServletRequest) req;
-    response.setHeader("Access-Control-Allow-Origin", "*");
-    response.setHeader("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS, POST, PUT, DELETE");
+    response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    response.setHeader("Access-Control-Allow-Methods", "*");
     response.setHeader("Access-Control-Max-Age", "3600");
-    response.setHeader("Access-Control-Allow-Headers",
-        "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Content-Disposition, Access-Control-Request-Method, Access-Control-Request-Headers");
+    response.setHeader("Access-Control-Allow-Headers", "*");
 
     if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
       response.setStatus(HttpServletResponse.SC_OK);
