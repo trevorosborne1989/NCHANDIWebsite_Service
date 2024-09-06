@@ -1,15 +1,19 @@
 package nchandi.spring.services.NCHANDIWebsite_Service.controllers;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 import jakarta.servlet.http.HttpServletRequest;
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.People;
 import nchandi.spring.services.NCHANDIWebsite_Service.services.PeopleService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +26,15 @@ public class PeopleController {
 
 	@Autowired
 	PeopleService peopleService;
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public Collection<? extends GrantedAuthority> successLogin(HttpServletRequest request) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			return authentication.getAuthorities();
+		}
+		return null;
+	}
 
 	@RequestMapping(value = "/people", method = RequestMethod.GET)
 	public List<People> getAllPeoples(HttpServletRequest request) {

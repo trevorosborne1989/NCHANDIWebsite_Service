@@ -71,7 +71,7 @@ public class ResourceItemService {
 			throw new ResourceNotFoundException("ResourceItem with ID:" + resourceItemId + " not found.");
 		}
 		Optional<Attachment> attachment = attachmentService.getAttachmentById(resourceItemId);
-		if (attachment != null) {
+		if (attachment.isPresent()) {
 			attachmentService.deleteAttachment(resourceItemId);
 		}
 		resourceItemRepository.delete(resourceItem.get());

@@ -64,7 +64,7 @@ public class AttachmentService {
 
   public void deleteAttachment(String attachmentId) {
     Optional<Attachment> attachment = attachmentRepo.findById(attachmentId);
-    if (attachment == null) {
+    if (attachment.isEmpty()) {
       throw new ResourceNotFoundException("Attachment with ID:" + attachmentId + " not found.");
     }
     attachmentRepo.delete(attachment.get());
