@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.envers.Audited;
@@ -57,7 +58,7 @@ public class Facility {
 	private String primaryContactName;
 
 	@Column(name = "PRIMARY_CONTACT_PHONE")
-	@Length(max = 255)
+	@Size(min=11,max=11)
 	private String primaryContactPhone;
 
 	@Column(name = "PRIMARY_CONTACT_EMAIL")
@@ -69,7 +70,7 @@ public class Facility {
 	private String alternateContactName;
 
 	@Column(name = "ALTERNATE_CONTACT_PHONE")
-	@Length(max = 255)
+	@Size(min=11,max=11)
 	private String alternateContactPhone;
 
 	@Column(name = "ALTERNATE_CONTACT_EMAIL")
