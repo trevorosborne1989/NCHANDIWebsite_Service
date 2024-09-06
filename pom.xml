@@ -88,6 +88,12 @@
       <version>1.18.30</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>com.twilio.sdk</groupId>
+      <artifactId>twilio</artifactId>
+      <version>10.4.1</version>
+      <scope>compile</scope>
+    </dependency>
     <!-- Replacement for Swagger, Springfox, and our custom SwaggerConfig lib -->
     <dependency>
       <groupId>org.springdoc</groupId>

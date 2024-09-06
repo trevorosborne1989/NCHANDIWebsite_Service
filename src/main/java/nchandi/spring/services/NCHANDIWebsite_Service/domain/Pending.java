@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.envers.Audited;
@@ -41,7 +42,7 @@ public class Pending {
 	private String email;
 
 	@Column(name = "PHONE")
-	@Length(max = 255)
+	@Size(min=11,max=11)
 	private String phone;
 
 	@Column(name = "PREFERRED_CONTACT_METHOD")

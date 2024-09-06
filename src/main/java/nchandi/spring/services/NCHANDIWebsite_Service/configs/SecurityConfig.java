@@ -51,8 +51,8 @@ public class SecurityConfig {
               antMatcher("/h2-console/**"),
               antMatcher(HttpMethod.OPTIONS, "/**")).permitAll()
             // .requestMatchers(antMatcher(HttpMethod.GET, "/books/**")).permitAll()
-            .requestMatchers(antMatcher(HttpMethod.POST, "/people"))
-              .hasAnyRole("Chair", "Co-Chair", "Librarian", "Technology", "Treasurer", "Facilities")
+            // .requestMatchers(antMatcher(HttpMethod.POST, "/people"))
+            //   .hasAnyRole("Chair", "Co-Chair", "Librarian", "Technology", "Treasurer", "Facilities")
             .anyRequest().permitAll();
         })
         .formLogin(form -> form.loginPage("/login").permitAll()
