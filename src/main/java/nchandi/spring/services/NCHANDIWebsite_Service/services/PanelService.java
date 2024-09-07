@@ -39,6 +39,15 @@ public class PanelService {
     }
   }
 
+  public List<Panel> getPanelsForNotifications(int weekOfMonth, String dayOfWeek) {
+    List<Panel> panels = panelRepo.findByWeekOfMonthAndDayOfWeek(weekOfMonth, dayOfWeek);
+    if (panels.size() > 0) {
+      return panels;
+    } else {
+      throw new ResourceNotFoundException("No Records Found");
+    }
+  }
+
   public Optional<Panel> getPanelById(String panelId) {
     Optional<Panel> panel = panelRepo.findById(panelId);
     if (panel == null) {
