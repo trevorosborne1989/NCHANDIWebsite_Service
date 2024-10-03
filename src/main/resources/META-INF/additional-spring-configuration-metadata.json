@@ -1,21 +1,32 @@
-{"properties": [{
-  "name": "twilio.sid",
-  "type": "java.lang.String",
-  "description": "SID found on Twilio account dashboard'"
-},
-{
-  "name": "twilio.token",
-  "type": "java.lang.String",
-  "description": "Auth token found on Twilio account dashboard'"
-},
-{
-  "name": "twilio.phone",
-  "type": "java.lang.String",
-  "description": "Twilio registered phone number found on Twilio account dashboard'"
-},
-{
-  "name": "twilio.flow",
-  "type": "java.lang.String",
-  "description": "Twilio flow service found on Twilio account dashboard'"
-}
+{"properties": [
+  {
+    "name": "twilio.sid",
+    "type": "java.lang.String",
+    "description": "SID found on Twilio account dashboard'"
+  },
+  {
+    "name": "twilio.token",
+    "type": "java.lang.String",
+    "description": "Auth token found on Twilio account dashboard'"
+  },
+  {
+    "name": "twilio.phone",
+    "type": "java.lang.String",
+    "description": "Twilio registered phone number found on Twilio account dashboard'"
+  },
+  {
+    "name": "twilio.flow",
+    "type": "java.lang.String",
+    "description": "Twilio flow service found on Twilio account dashboard'"
+  },
+  {
+    "name": "zoho.username",
+    "type": "java.lang.String",
+    "description": "Username for Zoho mail client - technology chair"
+  },
+  {
+    "name": "zoho.password",
+    "type": "java.lang.String",
+    "description": "Password for Zoho mail client"
+  }
 ]}
