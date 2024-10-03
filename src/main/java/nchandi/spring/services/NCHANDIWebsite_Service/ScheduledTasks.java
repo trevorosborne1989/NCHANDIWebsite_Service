@@ -118,6 +118,7 @@ public class ScheduledTasks {
     System.out.println(phoneNumbers);
 
     // API call to our Twilio Flow service for notifications for each number
+    // To Check logs and see if flow is working go here: https://console.twilio.com/us1/monitor/logs/sms and here: https://console.twilio.com/us1/monitor/logs/debugger/errors
     // for (String phonenumber : phoneNumbers) {
     //   Twilio.init(twilioSID, twilioToken);
     //   Execution execution = Execution
