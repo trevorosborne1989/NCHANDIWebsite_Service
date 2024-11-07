@@ -5,8 +5,8 @@
 
   <groupId>nchandi.spring.services</groupId>
   <artifactId>NCHANDIWebsite_Service</artifactId>
-  <version>1.0.${bambooBuildNumber}</version>
-  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
   <name>NCHANDIWebsite_Service</name>
   <description>NCHANDIWebsite_Service project</description>
@@ -101,7 +101,6 @@
       <version>1.6.13</version>
     </dependency>
   </dependencies>
-
   <build>
     <plugins>
       <plugin>
@@ -110,5 +109,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>
