@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -13,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import com.twilio.type.PhoneNumber;
 import com.twilio.Twilio;
 import com.twilio.rest.studio.v2.flow.Execution;
 
@@ -74,19 +74,19 @@ public class ScheduledTasks {
     logger.info("Sending panel notifications...");
 
     // Get all panels that will occure tommorow
-    Calendar ca1 = Calendar.getInstance();
+    Calendar ca1endar = Calendar.getInstance();
     TimeZone time_zone = TimeZone.getTimeZone("PST");
-    ca1.setTimeZone(time_zone);
-    ca1.setMinimalDaysInFirstWeek(1);
-    ca1.add(Calendar.DAY_OF_WEEK, 1);
-    int week = ca1.get(Calendar.WEEK_OF_MONTH);
-    int day = ca1.get(Calendar.DAY_OF_WEEK);
+    ca1endar.setTimeZone(time_zone);
+    ca1endar.setMinimalDaysInFirstWeek(1);
+    ca1endar.add(Calendar.DAY_OF_WEEK, 1);
+    int week = ca1endar.get(Calendar.WEEK_OF_MONTH);
+    int day = ca1endar.get(Calendar.DAY_OF_WEEK);
     String dayString = convertDayOfWeek(day);
     List<Panel> panels = panelService.getPanelsForNotifications(week, dayString);
 
     //  Collect phone numbers of volunteers for each panel
-    ArrayList<String> phoneNumbers = new ArrayList<String>();
     for (Panel panel : panels) {
+      ArrayList<String> phoneNumbers = new ArrayList<String>();
       if (panel.getPanelCoordinator() != null) {
         phoneNumbers.add(panel.getPanelCoordinator().getPhone());
       }
@@ -108,28 +108,31 @@ public class ScheduledTasks {
       if (panel.getPanelMember5() != null) {
         phoneNumbers.add(panel.getPanelMember5().getPhone());
       }
+
+      // API call to our Twilio Flow service for notifications for each number using a customized flow.
+      for (String phonenumber : phoneNumbers) {
+        Twilio.init(twilioSID, twilioToken);
+        System.out.println(twilioSID + "----" + twilioToken);
+        Execution.creator(
+          twilioFlow,
+          new com.twilio.type.PhoneNumber("+" + phonenumber),
+          new com.twilio.type.PhoneNumber(twilioPhone))
+        .setParameters(new HashMap<String, Object>() {
+          {
+            put("eventTime", panel.getEventTime()); put("facility", panel.getFacility().getName());
+            put("panelCoordinatorName", panel.getPanelCoordinator().getFirstName() + " " + panel.getPanelCoordinator().getLastName());
+            put("panelCoordinatorPhone", panel.getPanelCoordinator().getPhone().substring(1));
+          }
+        })
+        .create();
+      }
     }
 
-    // Test if service grabs the right numbers. Check against data.sql file with panels to see if the right panels where selected and correct panel members to be notified.
-    System.out.println("The numbers to be notified: ");
+    // Test if service grabs tthe right panels.
+    System.out.println("The Panels for tommorrow... \n ");
     for (Panel panel : panels) {
-      System.out.println("week of month: " + panel.getWeekOfMonth() + ", day of week: " + panel.getDayOfWeek()+ ", panel id: " + panel.getId());
+      System.out.println("week of month: " + panel.getWeekOfMonth() + ", day of week: " + panel.getDayOfWeek()+ ", panel id: " + panel.getId() + "\n");
     }
-    System.out.println(phoneNumbers);
-
-    // API call to our Twilio Flow service for notifications for each number
-    // for (String phonenumber : phoneNumbers) {
-    //   Twilio.init(twilioSID, twilioToken);
-    //   Execution execution = Execution
-    //     .creator(
-    //       twilioFlow,
-    //       new com.twilio.type.PhoneNumber("+" + phonenumber),
-    //       new com.twilio.type.PhoneNumber(twilioPhone))
-    //     .create();
-    //   System.out.println(execution.getSid());
-    // }
-
-
 
   }
 
