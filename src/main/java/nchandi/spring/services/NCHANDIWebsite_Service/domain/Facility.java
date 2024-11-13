@@ -140,7 +140,7 @@ public class Facility {
 		this.city = city;
 	}
 
-	public String name() {
+	public String getName() {
 		return name;
 	}
 
@@ -152,7 +152,7 @@ public class Facility {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setFacilityType(String type) {
 		this.type = type;
 	}
 
