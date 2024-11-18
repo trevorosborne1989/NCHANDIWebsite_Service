@@ -35,8 +35,11 @@ public class ScheduledTasks {
   @Value("${twilio.phone}")
   private String twilioPhone;
 
-  @Value("${twilio.flow}")
-  private String twilioFlow;
+  @Value("${twilio.notification.flow}")
+  private String twilioNotificationFlow;
+
+  @Value("${twilio.feedback.flow}")
+  private String twilioFeedbackFlow;
 
   Logger logger = LoggerFactory.getLogger("nchandi.spring.services.NCHANDIWebsite_Service.ScheduledTasks");
 
@@ -46,6 +49,33 @@ public class ScheduledTasks {
   // @Scheduled(cron = ("0 30 7 * * *" ))
   public void reportCurrentTime() {
     logger.info("The time is now {}", dateFormat.format(new Date()));
+  }
+
+   //  Collect phone numbers of volunteers for each panel
+  private ArrayList<String> collectPhoneNumbers(Panel panel) {
+    ArrayList<String> phoneNumbers = new ArrayList<String>();
+    if (panel.getPanelCoordinator() != null) {
+      phoneNumbers.add(panel.getPanelCoordinator().getPhone());
+    }
+    if (panel.getPanelLeader() != null) {
+      phoneNumbers.add(panel.getPanelLeader().getPhone());
+    }
+    if (panel.getPanelMember1() != null) {
+      phoneNumbers.add(panel.getPanelMember1().getPhone());
+    }
+    if (panel.getPanelMember2() != null) {
+      phoneNumbers.add(panel.getPanelMember2().getPhone());
+    }
+    if (panel.getPanelMember3() != null) {
+      phoneNumbers.add(panel.getPanelMember3().getPhone());
+    }
+    if (panel.getPanelMember4() != null) {
+      phoneNumbers.add(panel.getPanelMember4().getPhone());
+    }
+    if (panel.getPanelMember5() != null) {
+      phoneNumbers.add(panel.getPanelMember5().getPhone());
+    }
+    return phoneNumbers;
   }
 
   private String convertDayOfWeek(int dayOfWeek) {
@@ -69,78 +99,82 @@ public class ScheduledTasks {
     }
   }
 
-  @Scheduled(cron = ("1 * * * * *" ))
-  public void sendPanelNotifications() {
-    logger.info("Sending panel notifications...");
+  // @Scheduled(cron = ("1 * * * * *" ))
+  // public void sendPanelNotifications() {
+  //   logger.info("Sending panel notifications...");
 
-    // Get all panels that will occure tommorow
+  //   // Get all panels that will occure tommorow
+  //   Calendar ca1endar = Calendar.getInstance();
+  //   TimeZone time_zone = TimeZone.getTimeZone("PST");
+  //   ca1endar.setTimeZone(time_zone);
+  //   ca1endar.setMinimalDaysInFirstWeek(1);
+  //   ca1endar.add(Calendar.DAY_OF_WEEK, 1);
+  //   int week = ca1endar.get(Calendar.WEEK_OF_MONTH);
+  //   int day = ca1endar.get(Calendar.DAY_OF_WEEK);
+  //   String dayString = convertDayOfWeek(day);
+  //   List<Panel> panels = panelService.getPanelsForNotifications(week, dayString);
+
+  //   for (Panel panel : panels) {
+  //     ArrayList<String> phoneNumbers = collectPhoneNumbers(panel);
+  //     // API call to our Twilio Flow service for notifications for each number using a customized flow.
+  //     for (String phonenumber : phoneNumbers) {
+  //       Twilio.init(twilioSID, twilioToken);
+  //       System.out.println(twilioSID + "----" + twilioToken);
+  //       Execution.creator(
+  //         twilioNotificationFlow,
+  //         new com.twilio.type.PhoneNumber("+" + phonenumber),
+  //         new com.twilio.type.PhoneNumber(twilioPhone))
+  //       .setParameters(new HashMap<String, Object>() {
+  //         {
+  //           put("eventTime", panel.getEventTime()); put("facility", panel.getFacility().getName());
+  //           put("panelCoordinatorName", panel.getPanelCoordinator().getFirstName() + " " + panel.getPanelCoordinator().getLastName());
+  //           put("panelCoordinatorPhone", panel.getPanelCoordinator().getPhone().substring(1));
+  //         }
+  //       })
+  //       .create();
+  //     }
+  //   }
+
+  //   // Test if service grabs tthe right panels.
+  //   System.out.println("The Panels for tommorrow... \n ");
+  //   for (Panel panel : panels) {
+  //     System.out.println("week of month: " + panel.getWeekOfMonth() + ", day of week: " + panel.getDayOfWeek()+ ", panel id: " + panel.getId() + "\n");
+  //   }
+
+  // }
+
+  @Scheduled(cron = ("1 * * * * *" ))
+  public void requestPanelFeeback() {
+    logger.info("Requesting panel feedback...");
+
+    // Get all panels that occured yesterday
     Calendar ca1endar = Calendar.getInstance();
     TimeZone time_zone = TimeZone.getTimeZone("PST");
     ca1endar.setTimeZone(time_zone);
     ca1endar.setMinimalDaysInFirstWeek(1);
-    ca1endar.add(Calendar.DAY_OF_WEEK, 1);
+    ca1endar.add(Calendar.DAY_OF_WEEK, -1);
     int week = ca1endar.get(Calendar.WEEK_OF_MONTH);
     int day = ca1endar.get(Calendar.DAY_OF_WEEK);
     String dayString = convertDayOfWeek(day);
     List<Panel> panels = panelService.getPanelsForNotifications(week, dayString);
 
-    //  Collect phone numbers of volunteers for each panel
     for (Panel panel : panels) {
-      ArrayList<String> phoneNumbers = new ArrayList<String>();
-      if (panel.getPanelCoordinator() != null) {
-        phoneNumbers.add(panel.getPanelCoordinator().getPhone());
-      }
-      if (panel.getPanelLeader() != null) {
-        phoneNumbers.add(panel.getPanelLeader().getPhone());
-      }
-      if (panel.getPanelMember1() != null) {
-        phoneNumbers.add(panel.getPanelMember1().getPhone());
-      }
-      if (panel.getPanelMember2() != null) {
-        phoneNumbers.add(panel.getPanelMember2().getPhone());
-      }
-      if (panel.getPanelMember3() != null) {
-        phoneNumbers.add(panel.getPanelMember3().getPhone());
-      }
-      if (panel.getPanelMember4() != null) {
-        phoneNumbers.add(panel.getPanelMember4().getPhone());
-      }
-      if (panel.getPanelMember5() != null) {
-        phoneNumbers.add(panel.getPanelMember5().getPhone());
-      }
-
-      // API call to our Twilio Flow service for notifications for each number using a customized flow.
+      ArrayList<String> phoneNumbers = collectPhoneNumbers(panel);
+      // API call to our Twilio Flow service for panel feedback for yesterday's meetings using custom flow
       for (String phonenumber : phoneNumbers) {
         Twilio.init(twilioSID, twilioToken);
         System.out.println(twilioSID + "----" + twilioToken);
         Execution.creator(
-          twilioFlow,
+          twilioFeedbackFlow,
           new com.twilio.type.PhoneNumber("+" + phonenumber),
           new com.twilio.type.PhoneNumber(twilioPhone))
         .setParameters(new HashMap<String, Object>() {
           {
             put("eventTime", panel.getEventTime()); put("facility", panel.getFacility().getName());
-            put("panelCoordinatorName", panel.getPanelCoordinator().getFirstName() + " " + panel.getPanelCoordinator().getLastName());
-            put("panelCoordinatorPhone", panel.getPanelCoordinator().getPhone().substring(1));
           }
         })
         .create();
       }
     }
-
-    // Test if service grabs tthe right panels.
-    System.out.println("The Panels for tommorrow... \n ");
-    for (Panel panel : panels) {
-      System.out.println("week of month: " + panel.getWeekOfMonth() + ", day of week: " + panel.getDayOfWeek()+ ", panel id: " + panel.getId() + "\n");
-    }
-
   }
-
-  // @Scheduled(cron = ("1 * * * * *" ))
-  public void requestPanelFeebacks() {
-    logger.info("Requesting panel feedback...");
-
-
-  }
-
 }
