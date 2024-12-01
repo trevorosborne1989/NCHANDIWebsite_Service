@@ -29,7 +29,7 @@ public class SecurityConfig {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(Arrays.asList("http://ec2-54-241-237-139.us-west-1.compute.amazonaws.com:3000"));
+    configuration.setAllowedOrigins(Arrays.asList("http://ec2-54-193-67-150.us-west-1.compute.amazonaws.com:3000"));
     configuration.setAllowedMethods(Arrays.asList("*"));
     configuration.setAllowedHeaders(Arrays.asList("Content-Type", "X-XSRF-TOKEN", "Authorization"));
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
