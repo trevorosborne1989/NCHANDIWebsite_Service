@@ -94,6 +94,11 @@
       <version>10.4.1</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>org.eclipse.angus</groupId>
+      <artifactId>angus-mail</artifactId>
+      <version>2.0.1</version>
+    </dependency>
     <!-- Replacement for Swagger, Springfox, and our custom SwaggerConfig lib -->
     <dependency>
       <groupId>org.springdoc</groupId>
