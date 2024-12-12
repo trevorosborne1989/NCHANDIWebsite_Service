@@ -31,7 +31,7 @@ public class SecurityConfig {
     CorsConfiguration configuration = new CorsConfiguration();
     // For local testing use below url
     // configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-    configuration.setAllowedOrigins(Arrays.asList("http://ec2-18-144-176-74.us-west-1.compute.amazonaws.com:3000"));
+    configuration.setAllowedOrigins(Arrays.asList("http://ec2-54-215-137-143.us-west-1.compute.amazonaws.com:3000"));
     configuration.setAllowedMethods(Arrays.asList("*"));
     configuration.setAllowedHeaders(Arrays.asList("Content-Type", "X-XSRF-TOKEN", "Authorization"));
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

@@ -27,7 +27,7 @@ public class ServiceCorsFilter implements Filter {
     HttpServletRequest request = (HttpServletRequest) req;
     // For local testing use below url
     // response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-    response.setHeader("Access-Control-Allow-Origin", "http://ec2-18-144-176-74.us-west-1.compute.amazonaws.com:3000");
+    response.setHeader("Access-Control-Allow-Origin", "http://ec2-54-215-137-143.us-west-1.compute.amazonaws.com:3000");
     response.setHeader("Access-Control-Allow-Methods", "*");
     response.setHeader("Access-Control-Max-Age", "3600");
     response.setHeader("Access-Control-Allow-Headers", "*");
