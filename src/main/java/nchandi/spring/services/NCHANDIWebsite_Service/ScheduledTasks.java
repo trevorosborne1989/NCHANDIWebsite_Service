@@ -1,9 +1,7 @@
 package nchandi.spring.services.NCHANDIWebsite_Service;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TimeZone;
@@ -106,26 +104,26 @@ public class ScheduledTasks {
     String dayString = convertDayOfWeek(day);
     List<Panel> panels = panelService.getPanelsForNotifications(week, dayString);
 
-    // for (Panel panel : panels) {
-    //   ArrayList<String> phoneNumbers = collectPhoneNumbers(panel);
-    //   // API call to our Twilio Flow service for notifications for each number using a customized flow.
-    //   for (String phonenumber : phoneNumbers) {
-    //     Twilio.init(twilioSID, twilioToken);
-    //     System.out.println(twilioSID + "----" + twilioToken);
-    //     Execution.creator(
-    //       twilioNotificationFlow,
-    //       new com.twilio.type.PhoneNumber("+" + phonenumber),
-    //       new com.twilio.type.PhoneNumber(twilioPhone))
-    //     .setParameters(new HashMap<String, Object>() {
-    //       {
-    //         put("eventTime", panel.getEventTime()); put("facility", panel.getFacility().getName());
-    //         put("panelCoordinatorName", panel.getPanelCoordinator().getFirstName() + " " + panel.getPanelCoordinator().getLastName());
-    //         put("panelCoordinatorPhone", panel.getPanelCoordinator().getPhone().substring(1));
-    //       }
-    //     })
-    //     .create();
-    //   }
-    // }
+    for (Panel panel : panels) {
+      ArrayList<String> phoneNumbers = collectPhoneNumbers(panel);
+      // API call to our Twilio Flow service for notifications for each number using a customized flow.
+      for (String phonenumber : phoneNumbers) {
+        Twilio.init(twilioSID, twilioToken);
+        System.out.println(twilioSID + "----" + twilioToken);
+        Execution.creator(
+          twilioNotificationFlow,
+          new com.twilio.type.PhoneNumber("+" + phonenumber),
+          new com.twilio.type.PhoneNumber(twilioPhone))
+        .setParameters(new HashMap<String, Object>() {
+          {
+            put("eventTime", panel.getEventTime()); put("facility", panel.getFacility().getName());
+            put("panelCoordinatorName", panel.getPanelCoordinator().getFirstName() + " " + panel.getPanelCoordinator().getLastName());
+            put("panelCoordinatorPhone", panel.getPanelCoordinator().getPhone().substring(1));
+          }
+        })
+        .create();
+      }
+    }
 
     // Test if service grabs the right panels.
     System.out.println("The Panels for tommorrow... \n ");
@@ -135,38 +133,38 @@ public class ScheduledTasks {
 
   }
 
-  // @Scheduled(cron = ("1 * * * * *" ))
-  // public void requestPanelFeeback() {
-  //   logger.info("Requesting panel feedback...");
+  @Scheduled(cron = ("1 * * * * *" ))
+  public void requestPanelFeeback() {
+    logger.info("Requesting panel feedback...");
 
-  //   // Get all panels that occured yesterday
-  //   Calendar ca1endar = Calendar.getInstance();
-  //   TimeZone time_zone = TimeZone.getTimeZone("PST");
-  //   ca1endar.setTimeZone(time_zone);
-  //   ca1endar.setMinimalDaysInFirstWeek(1);
-  //   ca1endar.add(Calendar.DAY_OF_WEEK, -1);
-  //   int week = ca1endar.get(Calendar.WEEK_OF_MONTH);
-  //   int day = ca1endar.get(Calendar.DAY_OF_WEEK);
-  //   String dayString = convertDayOfWeek(day);
-  //   List<Panel> panels = panelService.getPanelsForNotifications(week, dayString);
+    // Get all panels that occured yesterday
+    Calendar ca1endar = Calendar.getInstance();
+    TimeZone time_zone = TimeZone.getTimeZone("PST");
+    ca1endar.setTimeZone(time_zone);
+    ca1endar.setMinimalDaysInFirstWeek(1);
+    ca1endar.add(Calendar.DAY_OF_WEEK, -1);
+    int week = ca1endar.get(Calendar.WEEK_OF_MONTH);
+    int day = ca1endar.get(Calendar.DAY_OF_WEEK);
+    String dayString = convertDayOfWeek(day);
+    List<Panel> panels = panelService.getPanelsForNotifications(week, dayString);
 
-  //   for (Panel panel : panels) {
-  //     ArrayList<String> phoneNumbers = collectPhoneNumbers(panel);
-  //     // API call to our Twilio Flow service for panel feedback for yesterday's meetings using custom flow
-  //     for (String phonenumber : phoneNumbers) {
-  //       Twilio.init(twilioSID, twilioToken);
-  //       System.out.println(twilioSID + "----" + twilioToken);
-  //       Execution.creator(
-  //         twilioFeedbackFlow,
-  //         new com.twilio.type.PhoneNumber("+" + phonenumber),
-  //         new com.twilio.type.PhoneNumber(twilioPhone))
-  //       .setParameters(new HashMap<String, Object>() {
-  //         {
-  //           put("eventTime", panel.getEventTime()); put("facility", panel.getFacility().getName());
-  //         }
-  //       })
-  //       .create();
-  //     }
-  //   }
-  // }
+    for (Panel panel : panels) {
+      ArrayList<String> phoneNumbers = collectPhoneNumbers(panel);
+      // API call to our Twilio Flow service for panel feedback for yesterday's meetings using custom flow
+      for (String phonenumber : phoneNumbers) {
+        Twilio.init(twilioSID, twilioToken);
+        System.out.println(twilioSID + "----" + twilioToken);
+        Execution.creator(
+          twilioFeedbackFlow,
+          new com.twilio.type.PhoneNumber("+" + phonenumber),
+          new com.twilio.type.PhoneNumber(twilioPhone))
+        .setParameters(new HashMap<String, Object>() {
+          {
+            put("eventTime", panel.getEventTime()); put("facility", panel.getFacility().getName());
+          }
+        })
+        .create();
+      }
+    }
+  }
 }
