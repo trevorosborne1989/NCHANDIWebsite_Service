@@ -73,7 +73,7 @@ public class EmailService {
 
     ---------------------------<br/><br/><br/>
     """.formatted(literatureRequest.getFirstName(), literatureRequest.getLastName(), literatureRequest.getCommitment(), 
-    literatureRequest.getFacility(), literatureRequest.getEmail(), literatureRequest.getPhoneNumber());
+    literatureRequest.getFacility(), literatureRequest.getEmail(), literatureRequest.getphone());
 
     String request = "";
 

@@ -6,7 +6,7 @@ public class LiteratureRequest {
   private String commitment;
   private String facility;
   private String email;
-  private String phoneNumber;
+  private String phone;
   private int livingSoberQty;
   private int stepsAndTraditions12x12Qty;
   private int aaPaperbackQty;
@@ -58,12 +58,12 @@ public class LiteratureRequest {
     this.email = email;
   }
 
-  public String getPhoneNumber() {
-    return this.phoneNumber;
+  public String getphone() {
+    return this.phone;
   }
 
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
+  public void setphone(String phone) {
+    this.phone = phone;
   }
 
   public int getLivingSoberQty() {
