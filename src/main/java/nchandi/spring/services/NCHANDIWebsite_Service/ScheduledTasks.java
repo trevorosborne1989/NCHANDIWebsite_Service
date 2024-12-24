@@ -44,25 +44,26 @@ public class ScheduledTasks {
    //  Collect phone numbers of volunteers for each panel
   private ArrayList<String> collectPhoneNumbers(Panel panel) {
     ArrayList<String> phoneNumbers = new ArrayList<String>();
-    if (panel.getPanelCoordinator() != null) {
+    String textFlag = "Text";
+    if ((panel.getPanelCoordinator() != null) && (panel.getPanelCoordinator().getPreferredContactMethod().equals(textFlag))) {
       phoneNumbers.add(panel.getPanelCoordinator().getPhone());
     }
-    if (panel.getPanelLeader() != null) {
+    if ((panel.getPanelLeader() != null) && (panel.getPanelLeader().getPreferredContactMethod().equals(textFlag))) {
       phoneNumbers.add(panel.getPanelLeader().getPhone());
     }
-    if (panel.getPanelMember1() != null) {
+    if ((panel.getPanelMember1() != null) && (panel.getPanelMember1().getPreferredContactMethod().equals(textFlag))) {
       phoneNumbers.add(panel.getPanelMember1().getPhone());
     }
-    if (panel.getPanelMember2() != null) {
+    if ((panel.getPanelMember2() != null) && (panel.getPanelMember2().getPreferredContactMethod().equals(textFlag))) {
       phoneNumbers.add(panel.getPanelMember2().getPhone());
     }
-    if (panel.getPanelMember3() != null) {
+    if ((panel.getPanelMember3() != null) && (panel.getPanelMember3().getPreferredContactMethod().equals(textFlag))) {
       phoneNumbers.add(panel.getPanelMember3().getPhone());
     }
-    if (panel.getPanelMember4() != null) {
+    if ((panel.getPanelMember4() != null) && (panel.getPanelMember4().getPreferredContactMethod().equals(textFlag))) {
       phoneNumbers.add(panel.getPanelMember4().getPhone());
     }
-    if (panel.getPanelMember5() != null) {
+    if ((panel.getPanelMember5() != null) && (panel.getPanelMember5().getPreferredContactMethod().equals(textFlag))) {
       phoneNumbers.add(panel.getPanelMember5().getPhone());
     }
     return phoneNumbers;
