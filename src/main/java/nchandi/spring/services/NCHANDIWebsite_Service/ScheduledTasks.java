@@ -90,7 +90,7 @@ public class ScheduledTasks {
     }
   }
 
-  @Scheduled(cron = ("1 * * * * *" ))
+  @Scheduled(cron = ("* 30 7 * * *" ))
   public void sendPanelNotifications() {
     logger.info("Sending panel notifications...");
 
@@ -134,7 +134,7 @@ public class ScheduledTasks {
 
   }
 
-  @Scheduled(cron = ("1 * * * * *" ))
+  @Scheduled(cron = ("* 45 7 * * *" ))
   public void requestPanelFeeback() {
     logger.info("Requesting panel feedback...");
 
