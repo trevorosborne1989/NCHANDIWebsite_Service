@@ -11,6 +11,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
+import nchandi.spring.services.NCHANDIWebsite_Service.domain.Panel;
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.People;
 import nchandi.spring.services.NCHANDIWebsite_Service.repositories.PeopleRepository;
 import nchandi.spring.services.NCHANDIWebsite_Service.utils.PersonComparator;
@@ -20,6 +21,9 @@ public class PeopleService {
 
 	@Autowired
 	PeopleRepository peopleRepo;
+
+	@Autowired
+	PanelService panelService;
 
 	Logger logger = LoggerFactory.getLogger("nchandi.spring.services.NCHANDIWebsite_Service.services.PeopleService");
 
@@ -69,6 +73,29 @@ public class PeopleService {
 		Optional<People> people = peopleRepo.findById(personId);
 		if (people.isEmpty()) {
 			throw new ResourceNotFoundException("People with ID:" + personId + " not found.");
+		}
+		List<Panel> panels = panelService.getPanels();
+		for (Panel panel : panels) {
+			if (panel.getPanelMember1() != null && panel.getPanelMember1().getId().equals(personId)) {
+				panel.setNumberNeeded(panel.getNumberNeeded() + 1);
+				panelService.updatePanel(panel.getId(), panel);
+			}
+			if (panel.getPanelMember2() != null && panel.getPanelMember2().getId().equals(personId)) {
+				panel.setNumberNeeded(panel.getNumberNeeded() + 1);
+				panelService.updatePanel(panel.getId(), panel);
+			}
+			if (panel.getPanelMember3() != null && panel.getPanelMember3().getId().equals(personId)) {
+				panel.setNumberNeeded(panel.getNumberNeeded() + 1);
+				panelService.updatePanel(panel.getId(), panel);
+			}
+			if (panel.getPanelMember4() != null && panel.getPanelMember4().getId().equals(personId)) {
+				panel.setNumberNeeded(panel.getNumberNeeded() + 1);
+				panelService.updatePanel(panel.getId(), panel);
+			}
+			if (panel.getPanelMember5() != null && panel.getPanelMember5().getId().equals(personId)) {
+				panel.setNumberNeeded(panel.getNumberNeeded() + 1);
+				panelService.updatePanel(panel.getId(), panel);
+			}
 		}
 		peopleRepo.delete(people.get());
 	}

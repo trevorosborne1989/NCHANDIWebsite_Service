@@ -62,11 +62,28 @@ public class PanelService {
 
   public Panel updatePanel(String panelId, Panel panel) {
     Optional<Panel> existingPanel = panelRepo.findById(panelId);
+    int numberNeeded = 0;
     if (!panel.getId().equals(panelId)) {
       throw new DataIntegrityViolationException("Invalid ID was passed in the request body.");
     } else if (existingPanel == null) {
       throw new ResourceNotFoundException("Panel with ID:" + panelId + " not found.");
     }
+    if (panel.getPanelMember1() == null) {
+      ++numberNeeded;
+    }
+    if (panel.getPanelMember2() == null) {
+      ++numberNeeded;
+    }
+    if (panel.getPanelMember3() == null) {
+      ++numberNeeded;
+    }
+    if (panel.getPanelMember4() == null) {
+      ++numberNeeded;
+    }
+    if (panel.getPanelMember5() == null) {
+      ++numberNeeded;
+    }
+    panel.setNumberNeeded(numberNeeded);
     return panelRepo.save(panel);
   }
 
