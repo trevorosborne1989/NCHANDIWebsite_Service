@@ -1,5 +1,6 @@
 package nchandi.spring.services.NCHANDIWebsite_Service.configs;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -26,12 +27,13 @@ import java.util.Arrays;
 @Configuration
 public class SecurityConfig {
 
+  @Value("${ui.url}")
+  private String uiUrl;
+
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    // For local testing use below url
-    // configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-    configuration.setAllowedOrigins(Arrays.asList("http://ec2-54-215-137-143.us-west-1.compute.amazonaws.com:3000"));
+    configuration.setAllowedOrigins(Arrays.asList(uiUrl));
     configuration.setAllowedMethods(Arrays.asList("*"));
     configuration.setAllowedHeaders(Arrays.asList("Content-Type", "X-XSRF-TOKEN", "Authorization"));
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

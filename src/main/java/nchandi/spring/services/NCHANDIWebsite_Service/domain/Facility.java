@@ -65,12 +65,15 @@ public class Facility {
 	@Length(max = 255)
 	private String primaryContactEmail;
 
+	@Column(name = "ALTERNATE_CONTACT")
+	private Boolean alternateContact;
+
 	@Column(name = "ALTERNATE_CONTACT_NAME")
 	@Length(max = 255)
 	private String alternateContactName;
 
 	@Column(name = "ALTERNATE_CONTACT_PHONE")
-	@Size(min=11,max=11)
+	@Size(max=11)
 	private String alternateContactPhone;
 
 	@Column(name = "ALTERNATE_CONTACT_EMAIL")
