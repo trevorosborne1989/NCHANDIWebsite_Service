@@ -33,7 +33,7 @@ public class SecurityConfig {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(Arrays.asList(uiUrl));
+    configuration.setAllowedOrigins(Arrays.asList("*"));
     configuration.setAllowedMethods(Arrays.asList("*"));
     configuration.setAllowedHeaders(Arrays.asList("Content-Type", "X-XSRF-TOKEN", "Authorization"));
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -62,7 +62,8 @@ public class SecurityConfig {
         .formLogin(form -> form.loginPage("/login").permitAll()
           .loginProcessingUrl("/login"))
         .logout(logout -> logout.logoutUrl("/logout")
-          .deleteCookies("JSESSIONID", "isAdmin"))
+          // .deleteCookies("JSESSIONID", "isAdmin"))
+          .deleteCookies("JSESSIONID", "tempCookie"))
         .headers(h -> h.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)) // This so embedded frames in h2-console are working.
         .httpBasic(Customizer.withDefaults())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
