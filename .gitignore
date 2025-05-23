@@ -14,7 +14,7 @@ mvnw.cmd
 NCHANDI-key-pair.pem
 logging/spring.log
 .DS_Store
-logging/spring.log.2025-04-22.0.gz
+logging/*
 h2/nchandi-h2.mv.db
 h2/nchandi-h2-db.mv.db
 h2/nchandi-h2-db.trace.db

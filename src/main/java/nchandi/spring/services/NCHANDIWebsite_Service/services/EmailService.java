@@ -18,6 +18,7 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
+import nchandi.spring.services.NCHANDIWebsite_Service.domain.Pending;
 import nchandi.spring.services.NCHANDIWebsite_Service.dto.ContactForm;
 import nchandi.spring.services.NCHANDIWebsite_Service.dto.LiteratureRequest;
 
@@ -199,5 +200,70 @@ public class EmailService {
     Transport.send(message);
 
 		return contactForm;
+	}
+
+  public Pending emailPendingNotification (Pending pending) throws MessagingException {
+
+    Properties prop = new Properties();
+    prop.put("mail.transport.protocol", "smtp");
+    prop.put("mail.smtp.auth", true);
+    prop.put("mail.smtp.starttls.enable", "true");
+    prop.put("mail.smtp.host", "smtppro.zoho.com");
+    prop.put("mail.smtp.port", "587");
+    prop.put("mail.smtp.ssl.trust", "smtppro.zoho.com");
+
+    Session session = Session.getInstance(prop, new Authenticator() {
+      @Override
+      protected PasswordAuthentication getPasswordAuthentication() {
+          return new PasswordAuthentication(zohoUsername, zohoPassword);
+      }
+    });
+
+    MimeMessage message = new MimeMessage(session);
+    message.setFrom(new InternetAddress("technology@nchandi.org"));
+    message.setRecipients(
+      Message.RecipientType.TO, InternetAddress.parse("facilities@nchandi.org"));
+    message.setSubject("NCHANDI New Volunteer Pending");
+
+    String noCountryCodePhone = pending.getPhone().substring(1);
+    String dashedPhoneNumber = noCountryCodePhone.substring(0, 3)
+      + "-" + noCountryCodePhone.substring(3, 6) + "-" +
+      noCountryCodePhone.substring(6, 10);
+
+    String msg =
+    """
+    <br/>
+    ~A new volunteer is pending approval on the nchandi.org website.<br/><br/><br/>
+
+    ---------------------------<br/><br/><br/>
+
+    <b>First Name:</b> %s<br/><br/>
+    <b>Last Name:</b> %s<br/><br/>
+    <b>Email:</b> %s<br/><br/>
+    <b>Phone Number:</b> %s<br/><br/>
+    <b>Preferred Contact Method:</b> %s<br/><br/>
+    <b>Facility Name:</b> %s<br/><br/>
+    <b>Day Of Week:</b> %s<br/><br/>
+    <b>Week Of Month:</b> %s<br/><br/>
+    <b>Event Time:</b> %s<br/><br/>
+    <b>Volunteers This Panel Needs:</b> %s<br/><br/>
+    <b>Gender Of This Panel:</b> %s<br/><br/><br/>
+
+    ---------------------------<br/><br/><br/>
+    """.formatted(pending.getFirstName(), pending.getLastName(), pending.getEmail(), dashedPhoneNumber,
+    pending.getPreferredContactMethod(), pending.getFacilityName(), pending.getDayOfWeek(), pending.getWeekOfMonth(),
+    pending.getEventTime(), pending.getNumberNeeded(), pending.getGender());
+
+    MimeBodyPart mimeBodyPart = new MimeBodyPart();
+    mimeBodyPart.setContent(msg, "text/html; charset=utf-8");
+
+    Multipart multipart = new MimeMultipart();
+    multipart.addBodyPart(mimeBodyPart);
+
+    message.setContent(multipart);
+
+    Transport.send(message);
+
+		return pending;
 	}
 }
