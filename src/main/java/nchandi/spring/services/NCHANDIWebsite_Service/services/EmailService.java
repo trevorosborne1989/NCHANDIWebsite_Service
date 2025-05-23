@@ -55,7 +55,7 @@ public class EmailService {
     message.setFrom(new InternetAddress("technology@nchandi.org"));
     message.setRecipients(
       Message.RecipientType.TO, InternetAddress.parse("denoxr650l@gmail.com"));
-    message.setSubject("NCHANDI New Literature Request");
+    message.setSubject("resource request");
 
     String msg =
     """
