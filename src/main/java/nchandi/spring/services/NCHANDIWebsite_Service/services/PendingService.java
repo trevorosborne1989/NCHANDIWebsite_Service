@@ -10,6 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
+import jakarta.mail.MessagingException;
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.Panel;
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.Pending;
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.People;
@@ -31,6 +32,9 @@ public class PendingService {
 	@Autowired
 	PanelService panelService;
 
+	@Autowired
+	EmailService emailService;
+
 	Logger logger = LoggerFactory.getLogger("nchandi.spring.services.NCHANDIWebsite_Service.services.PendingService");
 
 	public List<Pending> getPendings() {
@@ -46,7 +50,8 @@ public class PendingService {
 		return pending;
 	}
 
-	public Pending savePending(Pending pending) {
+	public Pending savePending(Pending pending) throws MessagingException {
+		emailService.emailPendingNotification(pending);
 		return pendingRepo.save(pending);
 	}
 
