@@ -27,13 +27,18 @@ public class PeopleController {
 	@Autowired
 	PeopleService peopleService;
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public Collection<? extends GrantedAuthority> successLogin(HttpServletRequest request) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (!(authentication instanceof AnonymousAuthenticationToken)) {
 			return authentication.getAuthorities();
 		}
 		return null;
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public void successLogout(HttpServletRequest request) {
+		SecurityContextHolder.clearContext();
 	}
 
 	@RequestMapping(value = "/people", method = RequestMethod.GET)
