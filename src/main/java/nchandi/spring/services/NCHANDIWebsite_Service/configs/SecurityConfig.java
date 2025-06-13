@@ -3,7 +3,6 @@ package nchandi.spring.services.NCHANDIWebsite_Service.configs;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,8 +17,6 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 import java.util.Arrays;
 
@@ -43,30 +40,28 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-    httpSecurity.csrf(AbstractHttpConfigurer::disable)
-        .exceptionHandling(c -> c.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
-        .cors(Customizer.withDefaults()) // By default, looks for bean called corsConfigurationSource()
-        .authorizeHttpRequests(authorize -> {
-          authorize
-            .requestMatchers(
-              antMatcher("/swagger-ui/**"),
-              antMatcher("/swagger-ui.html"),
-              antMatcher("/v3/**"),
-              antMatcher("/h2-console/**"),
-              antMatcher(HttpMethod.OPTIONS, "/**")).permitAll()
-            // .requestMatchers(antMatcher(HttpMethod.GET, "/books/**")).permitAll()
-            // .requestMatchers(antMatcher(HttpMethod.POST, "/people"))
-            //   .hasAnyRole("Chair", "Co-Chair", "Librarian", "Technology", "Treasurer", "Facilities")
-            .anyRequest().permitAll();
-        })
-        .formLogin(form -> form.loginPage("/login").permitAll()
-          .loginProcessingUrl("/login"))
-        .logout(logout -> logout.logoutUrl("/logout")
-          // .deleteCookies("JSESSIONID", "isAdmin"))
-          .deleteCookies("JSESSIONID", "tempCookie"))
-        .headers(h -> h.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)) // This so embedded frames in h2-console are working.
-        .httpBasic(Customizer.withDefaults())
-        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+    httpSecurity
+      .csrf(AbstractHttpConfigurer::disable)
+      .exceptionHandling(c -> c.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+      .cors(Customizer.withDefaults()) // By default, looks for bean called corsConfigurationSource()
+      .authorizeHttpRequests(authorize -> {
+        authorize
+          // .requestMatchers(
+          //   antMatcher("/swagger-ui/**"),
+          //   antMatcher("/swagger-ui.html"),
+          //   antMatcher("/v3/**"),
+          //   antMatcher("/h2-console/**"),
+          //   antMatcher(HttpMethod.OPTIONS, "/**")).permitAll()
+          // .requestMatchers(antMatcher(HttpMethod.GET, "/books/**")).permitAll()
+          // .requestMatchers(antMatcher(HttpMethod.POST, "/people"))
+          //   .hasAnyRole("Chair", "Co-Chair", "Librarian", "Technology", "Treasurer", "Facilities")
+          .anyRequest().permitAll();
+      })
+      .formLogin(form -> form.disable())
+      .logout(logout -> logout.disable())
+      .headers(h -> h.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)) // This so embedded frames in h2-console are working.
+      .httpBasic(Customizer.withDefaults())
+      .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
     return httpSecurity.build();
   }
