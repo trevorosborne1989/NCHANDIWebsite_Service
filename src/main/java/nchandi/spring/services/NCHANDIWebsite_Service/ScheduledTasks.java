@@ -27,8 +27,7 @@ public class ScheduledTasks {
   @Value("${twilio.sid}")
   private String twilioSID;
 
-  @Value("${twilio.token}")
-  private String twilioToken;
+  private String twilioToken = "";
 
   @Value("${twilio.phone}")
   private String twilioPhone;
@@ -90,7 +89,7 @@ public class ScheduledTasks {
     }
   }
 
-  @Scheduled(cron = ("* 30 7 * * *" ))
+  @Scheduled(cron = "0 30 7 * * *")
   public void sendPanelNotifications() {
     logger.info("Sending panel notifications...");
 
@@ -134,7 +133,7 @@ public class ScheduledTasks {
 
   }
 
-  @Scheduled(cron = ("* 45 7 * * *" ))
+  @Scheduled(cron = "0 45 7 * * *")
   public void requestPanelFeeback() {
     logger.info("Requesting panel feedback...");
 
