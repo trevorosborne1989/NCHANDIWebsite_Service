@@ -19,3 +19,4 @@ h2/nchandi-h2.mv.db
 h2/nchandi-h2-db.mv.db
 h2/nchandi-h2-db.trace.db
 src/main/resources/application.properties
+h2/backups/nchandi-data-backup.zip
