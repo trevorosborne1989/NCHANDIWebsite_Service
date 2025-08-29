@@ -41,7 +41,7 @@ public class PendingController {
 	public Pending savePending(
 			@RequestBody Pending pending,
 			HttpServletRequest request) throws MessagingException {
-		return pendingService.savePending(pending);
+		return pendingService.savePending(pending, request);
 	}
 
 	@RequestMapping(value = "/pendings/{pendingId}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
