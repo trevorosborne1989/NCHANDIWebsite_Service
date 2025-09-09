@@ -202,7 +202,7 @@ public class EmailService {
 		return contactForm;
 	}
 
-  public Pending emailPendingNotification (Pending pending) throws MessagingException {
+  public Pending emailPendingNotification (Pending pending, String recipient) throws MessagingException {
 
     Properties prop = new Properties();
     prop.put("mail.transport.protocol", "smtp");
@@ -222,7 +222,7 @@ public class EmailService {
     MimeMessage message = new MimeMessage(session);
     message.setFrom(new InternetAddress("technology@nchandi.org"));
     message.setRecipients(
-      Message.RecipientType.TO, InternetAddress.parse("facilities@nchandi.org"));
+      Message.RecipientType.TO, InternetAddress.parse(recipient));
     message.setSubject("NCHANDI New Volunteer Pending");
 
     String noCountryCodePhone = pending.getPhone().substring(1);

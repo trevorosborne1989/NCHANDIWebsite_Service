@@ -52,9 +52,11 @@ public class PendingService {
 	}
 
 	public Pending savePending(Pending pending, HttpServletRequest request) throws MessagingException {
-		if (request.isSecure()) {
+		if (request.getLocalAddr().equals("172.31.14.182")) {
 			// Notifications will only go out in production not sandbox
-			emailService.emailPendingNotification(pending);
+			emailService.emailPendingNotification(pending, "facilities@nchandi.org");
+		} else {
+			emailService.emailPendingNotification(pending, "trevorosborne89@yahoo.com");
 		}
 		return pendingRepo.save(pending);
 	}
