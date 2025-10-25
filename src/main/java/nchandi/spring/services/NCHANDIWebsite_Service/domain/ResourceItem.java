@@ -37,12 +37,20 @@ public class ResourceItem {
 	private String body;
 
 	@Column(name = "TYPE")
-	@Length(max = 25)
+	@Length(max = 255)
 	private String type;
 
 	@Column(name = "MONTH_OF_YEAR")
 	@Length(max = 25)
 	private String monthOfYear;
+
+	@Column(name = "URL_TITLE")
+	@Length(max = 255)
+	private String urlTitle;
+
+	@Column(name = "URL")
+	@Length(max = 255)
+	private String url;
 
 	@Column(name = "CREATED_DATE")
 	@Length(max = 255)
@@ -86,6 +94,22 @@ public class ResourceItem {
 
 	public void setMonthOfYear(String monthOfYear) {
 		this.monthOfYear = monthOfYear;
+	}
+
+	public String getUrlTitle() {
+		return urlTitle;
+	}
+
+	public void setUrlTitle(String urlTitle) {
+		this.urlTitle = urlTitle;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public String getCreatedDate() {
