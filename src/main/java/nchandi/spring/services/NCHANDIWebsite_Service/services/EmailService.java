@@ -73,7 +73,7 @@ public class EmailService {
     <b>Phone Number:</b> %s<br/><br/>
 
     ---------------------------<br/><br/><br/>
-    """.formatted(literatureRequest.getFirstName(), literatureRequest.getLastName(), literatureRequest.getCommitment(), 
+    """.formatted(literatureRequest.getFirstName(), literatureRequest.getLastName(), literatureRequest.getCommitment(),
     literatureRequest.getFacility(), literatureRequest.getEmail(), literatureRequest.getphone());
 
     String request = "";
@@ -97,6 +97,21 @@ public class EmailService {
       request = request + """
           <b>Alcoholics Anonymous pocket size Qty:</b>  %d<br/><br/>
           """.formatted(literatureRequest.getAaPocketSizeQty());
+    }
+    if (literatureRequest.getAaComesOfAgeQty() > 0) {
+      request = request + """
+          <b>AA Comes of Age Qty:</b>  %d<br/><br/>
+          """.formatted(literatureRequest.getAaComesOfAgeQty());
+    }
+    if (literatureRequest.getBigBookPlainEnglishQty() > 0) {
+      request = request + """
+          <b>Big Book plain English Qty:</b>  %d<br/><br/>
+          """.formatted(literatureRequest.getBigBookPlainEnglishQty());
+    }
+    if (literatureRequest.getABookOfFellowshipQty() > 0) {
+      request = request + """
+          <b>A Book of Fellowship - 90 Years of Sharing Love and Service Qty:</b>  %d<br/><br/>
+          """.formatted(literatureRequest.getABookOfFellowshipQty());
     }
     if (literatureRequest.getGrapevineQty() > 0) {
       request = request + """
