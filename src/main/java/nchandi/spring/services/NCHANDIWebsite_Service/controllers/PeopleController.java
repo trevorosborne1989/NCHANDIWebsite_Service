@@ -42,8 +42,8 @@ public class PeopleController {
 	}
 
 	@RequestMapping(value = "/people", method = RequestMethod.GET)
-	public List<People> getAllPeoples(HttpServletRequest request) {
-		return peopleService.getPeoples();
+	public List<People> getAllPeople(HttpServletRequest request) {
+		return peopleService.getPeople();
 	}
 
 	@RequestMapping(value = "/people/{personId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

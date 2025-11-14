@@ -23,9 +23,9 @@ public class PeopleService {
 
 	Logger logger = LoggerFactory.getLogger("nchandi.spring.services.NCHANDIWebsite_Service.services.PeopleService");
 
-	public List<People> getPeoples() {
-
+	public List<People> getPeople() {
 		List<People> people = peopleRepo.findAll();
+				System.out.println(people.get(0));
 		if (people.size() > 0) {
 			Collections.sort(people, new PersonComparator());
 			return people;
