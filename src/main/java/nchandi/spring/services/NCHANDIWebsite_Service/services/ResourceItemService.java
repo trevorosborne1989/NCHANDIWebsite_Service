@@ -48,9 +48,11 @@ public class ResourceItemService {
 		Date currentDate = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		resourceItem.setCreatedDate(simpleDateFormat.format(currentDate));
-		List<ResourceItem> existingMonthAndType = resourceItemRepository.findByTypeAndMonthOfYear(resourceItem.getType(), resourceItem.getMonthOfYear());
-		if (!existingMonthAndType.isEmpty()) {
-			deleteResourceItem(existingMonthAndType.get(0).getId());
+		if (resourceItem.getType().equals("Minutes") || resourceItem.getType().equals("Financial")) {
+			List<ResourceItem> existingMonthAndType = resourceItemRepository.findByTypeAndMonthOfYear(resourceItem.getType(), resourceItem.getMonthOfYear());
+			if (!existingMonthAndType.isEmpty()) {
+				deleteResourceItem(existingMonthAndType.get(0).getId());
+			}
 		}
 		return resourceItemRepository.save(resourceItem);
 	}

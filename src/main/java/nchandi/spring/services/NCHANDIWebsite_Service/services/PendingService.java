@@ -10,6 +10,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
+import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpServletRequest;
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.Panel;
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.Pending;
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.People;
@@ -31,6 +33,9 @@ public class PendingService {
 	@Autowired
 	PanelService panelService;
 
+	@Autowired
+	EmailService emailService;
+
 	Logger logger = LoggerFactory.getLogger("nchandi.spring.services.NCHANDIWebsite_Service.services.PendingService");
 
 	public List<Pending> getPendings() {
@@ -46,7 +51,13 @@ public class PendingService {
 		return pending;
 	}
 
-	public Pending savePending(Pending pending) {
+	public Pending savePending(Pending pending, HttpServletRequest request) throws MessagingException {
+		if (request.getLocalAddr().equals("172.31.14.182")) {
+			// Notifications will only go out in production not sandbox
+			emailService.emailPendingNotification(pending, "facilities@nchandi.org");
+		} else {
+			emailService.emailPendingNotification(pending, "trevorosborne89@yahoo.com");
+		}
 		return pendingRepo.save(pending);
 	}
 

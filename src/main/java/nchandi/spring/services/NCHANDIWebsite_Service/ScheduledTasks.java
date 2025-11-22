@@ -1,5 +1,9 @@
 package nchandi.spring.services.NCHANDIWebsite_Service;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -27,8 +31,7 @@ public class ScheduledTasks {
   @Value("${twilio.sid}")
   private String twilioSID;
 
-  @Value("${twilio.token}")
-  private String twilioToken;
+  private String twilioToken = "";
 
   @Value("${twilio.phone}")
   private String twilioPhone;
@@ -90,7 +93,7 @@ public class ScheduledTasks {
     }
   }
 
-  @Scheduled(cron = ("* 30 7 * * *" ))
+  @Scheduled(cron = "0 30 7 * * *")
   public void sendPanelNotifications() {
     logger.info("Sending panel notifications...");
 
@@ -134,7 +137,7 @@ public class ScheduledTasks {
 
   }
 
-  @Scheduled(cron = ("* 45 7 * * *" ))
+  @Scheduled(cron = "0 45 7 * * *")
   public void requestPanelFeeback() {
     logger.info("Requesting panel feedback...");
 
@@ -166,6 +169,33 @@ public class ScheduledTasks {
         })
         .create();
       }
+    }
+  }
+
+  @Scheduled(cron = "0 0 9 ? * MON")
+  public void backupNchandiDatabase() {
+    /**
+     * If a backup is needed, move this backup on the AWS EC2 Service instance to overwrite the current one in use:
+     * 1. navigate to the backup file: cd h2/backups
+     * 2. unzip the nchandi-data-backup.zip located inside h2/backups: unzip nchandi-data-backup.zip
+     * 3. move file to h2 to overwrite existing: mv nchandi-h2-db.mv.db ../nchandi-h2-db.mv.db
+    **/
+    logger.info("Starting weekly database backup...");
+
+    String jdbcUrl = "jdbc:h2:file:./h2/nchandi-h2-db";
+    String username = "sa";
+    String password = "";
+    String backupPath = "./h2/backups/nchandi-data-backup.zip";
+
+    try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+          Statement statement = connection.createStatement()) {
+
+        statement.executeUpdate("BACKUP TO '" + backupPath + "'");
+        logger.info("H2 database backed up successfully to: " + "'" + backupPath + "'");
+
+    } catch (SQLException e) {
+        logger.error("Error backing up H2 database: " + e.getMessage());
+        e.printStackTrace();
     }
   }
 }

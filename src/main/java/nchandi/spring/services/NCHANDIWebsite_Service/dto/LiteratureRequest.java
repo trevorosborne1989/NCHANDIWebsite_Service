@@ -11,6 +11,9 @@ public class LiteratureRequest {
   private int stepsAndTraditions12x12Qty;
   private int aaPaperbackQty;
   private int aaPocketSizeQty;
+  private int aaComesOfAgeQty;
+  private int bigBookPlainEnglishQty;
+  private int aBookOfFellowshipQty;
   private int grapevineQty;
   private int laVinaQty;
   private int newcomerPacketsQty;
@@ -96,6 +99,30 @@ public class LiteratureRequest {
 
   public void setAaPocketSizeQty(int aaPocketSizeQty) {
     this.aaPocketSizeQty = aaPocketSizeQty;
+  }
+
+  public int getAaComesOfAgeQty() {
+    return this.aaComesOfAgeQty;
+  }
+
+  public void setAaComesOfAgeQty(int aaComesOfAgeQty) {
+    this.aaComesOfAgeQty = aaComesOfAgeQty;
+  }
+
+  public int getBigBookPlainEnglishQty() {
+    return this.bigBookPlainEnglishQty;
+  }
+
+  public void setBigBookPlainEnglishQty(int bigBookPlainEnglishQty) {
+    this.bigBookPlainEnglishQty = bigBookPlainEnglishQty;
+  }
+
+  public int getABookOfFellowshipQty() {
+    return this.aBookOfFellowshipQty;
+  }
+
+  public void setABookOfFellowshipQty(int aBookOfFellowshipQty) {
+    this.aBookOfFellowshipQty = aBookOfFellowshipQty;
   }
 
   public int getGrapevineQty() {

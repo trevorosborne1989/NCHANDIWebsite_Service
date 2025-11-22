@@ -3,6 +3,7 @@ package nchandi.spring.services.NCHANDIWebsite_Service.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.Pending;
 import nchandi.spring.services.NCHANDIWebsite_Service.services.PendingService;
@@ -39,8 +40,8 @@ public class PendingController {
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Pending savePending(
 			@RequestBody Pending pending,
-			HttpServletRequest request) {
-		return pendingService.savePending(pending);
+			HttpServletRequest request) throws MessagingException {
+		return pendingService.savePending(pending, request);
 	}
 
 	@RequestMapping(value = "/pendings/{pendingId}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
