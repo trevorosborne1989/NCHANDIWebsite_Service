@@ -159,27 +159,27 @@ public class Facility {
 		this.type = type;
 	}
 
-	public String getMainContactEmail() {
+	public String getPrimaryContactEmail() {
 		return primaryContactEmail;
 	}
 
-	public void setMainContactEmail(String primaryContactEmail) {
+	public void setPrimaryContactEmail(String primaryContactEmail) {
 		this.primaryContactEmail = primaryContactEmail;
 	}
 
-	public String getMainContactName() {
+	public String getPrimaryContactName() {
 		return primaryContactName;
 	}
 
-	public void setMainContactName(String primaryContactName) {
+	public void setPrimaryContactName(String primaryContactName) {
 		this.primaryContactName = primaryContactName;
 	}
 
-	public String getMainContactPhone() {
+	public String getPrimaryContactPhone() {
 		return primaryContactPhone;
 	}
 
-	public void setMainContactPhone(String primaryContactPhone) {
+	public void setPrimaryContactPhone(String primaryContactPhone) {
 		this.primaryContactPhone = primaryContactPhone;
 	}
 
