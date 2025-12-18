@@ -7,10 +7,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.envers.Audited;
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
@@ -69,6 +74,14 @@ public class Pending {
 
 	@Column(name = "GENDER")
 	private String gender;
+
+	@Column(name = "IS_STANDBY")
+	private boolean isStandby;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
+	@CreationTimestamp
+	@Column(name = "CREATED_DATE", nullable = false, updatable = false)
+	private LocalDateTime createdDate;
 
 	@Column(name ="PANEL_ID")
 	@Length(max = 36)
@@ -154,6 +167,14 @@ public class Pending {
 		this.facilityName = facilityName;
 	}
 
+	public Integer getNumberNeeded() {
+		return numberNeeded;
+	}
+
+	public void setNumberNeeded(Integer numberNeeded) {
+		this.numberNeeded = numberNeeded;
+	}
+
 	public String getGender() {
 		return gender;
 	}
@@ -162,12 +183,22 @@ public class Pending {
 		this.gender = gender;
 	}
 
-	public Integer getNumberNeeded() {
-		return numberNeeded;
+	public boolean getIsStandby() {
+		return isStandby;
 	}
 
-	public void setNumberNeeded(Integer numberNeeded) {
-		this.numberNeeded = numberNeeded;
+	public void setIsStanby(boolean isStandby) {
+		this.isStandby = isStandby;
+	}
+
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+
+	@JsonIgnore
+	public void setCreatedDate(LocalDateTime createdDate) {
+		// We don't want the created date to be updated.
+		;
 	}
 
 	public String getPanelId() {
