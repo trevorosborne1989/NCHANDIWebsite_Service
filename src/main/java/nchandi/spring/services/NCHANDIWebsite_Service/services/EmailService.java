@@ -184,7 +184,7 @@ public class EmailService {
     MimeMessage message = new MimeMessage(session);
     message.setFrom(new InternetAddress("technology@nchandi.org"));
     message.setRecipients(
-      Message.RecipientType.TO, InternetAddress.parse("northcountyhandi@gmail.com"));
+      Message.RecipientType.TO, InternetAddress.parse("technology@nchandi.org"));
     message.setSubject("NCHANDI Contact Request");
 
     String msg =

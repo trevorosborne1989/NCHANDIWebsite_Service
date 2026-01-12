@@ -56,7 +56,7 @@ public class PendingService {
 			// Notifications will only go out in production not sandbox
 			emailService.emailPendingNotification(pending, "facilities@nchandi.org");
 		} else {
-			emailService.emailPendingNotification(pending, "trevorosborne89@yahoo.com");
+			emailService.emailPendingNotification(pending, "technology@nchandi.org");
 		}
 		return pendingRepo.save(pending);
 	}
