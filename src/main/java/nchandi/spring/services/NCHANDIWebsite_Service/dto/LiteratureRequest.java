@@ -10,14 +10,11 @@ public class LiteratureRequest {
   private int livingSoberQty;
   private int stepsAndTraditions12x12Qty;
   private int aaPaperbackQty;
-  private int aaPocketSizeQty;
-  private int aaComesOfAgeQty;
+  private int dailyReflectionsQty;
   private int bigBookPlainEnglishQty;
-  private int aBookOfFellowshipQty;
-  private int grapevineQty;
-  private int laVinaQty;
   private int newcomerPacketsQty;
-  private int literatureRackWithPamphletsQty;
+  private int bigBookSpanishQty;
+  private int stepsAndTraditions12x12SpanishQty;
   private int otherQty;
   private String comments;
 
@@ -93,20 +90,12 @@ public class LiteratureRequest {
     this.aaPaperbackQty = aaPaperbackQty;
   }
 
-  public int getAaPocketSizeQty() {
-    return this.aaPocketSizeQty;
+  public int getDailyReflectionsQty() {
+    return this.dailyReflectionsQty;
   }
 
-  public void setAaPocketSizeQty(int aaPocketSizeQty) {
-    this.aaPocketSizeQty = aaPocketSizeQty;
-  }
-
-  public int getAaComesOfAgeQty() {
-    return this.aaComesOfAgeQty;
-  }
-
-  public void setAaComesOfAgeQty(int aaComesOfAgeQty) {
-    this.aaComesOfAgeQty = aaComesOfAgeQty;
+  public void setDailyReflectionsQty(int dailyReflectionsQty) {
+    this.dailyReflectionsQty = dailyReflectionsQty;
   }
 
   public int getBigBookPlainEnglishQty() {
@@ -117,30 +106,6 @@ public class LiteratureRequest {
     this.bigBookPlainEnglishQty = bigBookPlainEnglishQty;
   }
 
-  public int getABookOfFellowshipQty() {
-    return this.aBookOfFellowshipQty;
-  }
-
-  public void setABookOfFellowshipQty(int aBookOfFellowshipQty) {
-    this.aBookOfFellowshipQty = aBookOfFellowshipQty;
-  }
-
-  public int getGrapevineQty() {
-    return this.grapevineQty;
-  }
-
-  public void setGrapevineQty(int grapevineQty) {
-    this.grapevineQty = grapevineQty;
-  }
-
-  public int getLaVinaQty() {
-    return this.laVinaQty;
-  }
-
-  public void setLaVinaQty(int laVinaQty) {
-    this.laVinaQty = laVinaQty;
-  }
-
   public int getNewcomerPacketsQty() {
     return this.newcomerPacketsQty;
   }
@@ -149,12 +114,20 @@ public class LiteratureRequest {
     this.newcomerPacketsQty = newcomerPacketsQty;
   }
 
-  public int getLiteratureRackWithPamphletsQty() {
-    return this.literatureRackWithPamphletsQty;
+    public int getBigBookSpanishQty() {
+    return this.bigBookSpanishQty;
   }
 
-  public void setLiteratureRackWithPamphletsQty(int literatureRackWithPamphletsQty) {
-    this.literatureRackWithPamphletsQty = literatureRackWithPamphletsQty;
+  public void setBigBookSpanishQty(int bigBookSpanishQty) {
+    this.bigBookSpanishQty = bigBookSpanishQty;
+  }
+
+  public int getStepsAndTraditions12x12SpanishQty() {
+    return this.stepsAndTraditions12x12SpanishQty;
+  }
+
+  public void setStepsAndTraditions12x12SpanishQty(int stepsAndTraditions12x12SpanishQty) {
+    this.stepsAndTraditions12x12SpanishQty = stepsAndTraditions12x12SpanishQty;
   }
 
   public int getOtherQty() {

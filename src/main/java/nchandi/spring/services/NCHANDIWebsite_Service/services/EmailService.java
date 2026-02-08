@@ -93,45 +93,30 @@ public class EmailService {
           <b>Alcoholics Anonymous paperback Qty:</b>  %d<br/><br/>
           """.formatted(literatureRequest.getAaPaperbackQty());
     }
-    if (literatureRequest.getAaPocketSizeQty() > 0) {
+    if (literatureRequest.getDailyReflectionsQty() > 0) {
       request = request + """
-          <b>Alcoholics Anonymous pocket size Qty:</b>  %d<br/><br/>
-          """.formatted(literatureRequest.getAaPocketSizeQty());
-    }
-    if (literatureRequest.getAaComesOfAgeQty() > 0) {
-      request = request + """
-          <b>AA Comes of Age Qty:</b>  %d<br/><br/>
-          """.formatted(literatureRequest.getAaComesOfAgeQty());
+          <b>Daily Reflections Qty:</b>  %d<br/><br/>
+          """.formatted(literatureRequest.getDailyReflectionsQty());
     }
     if (literatureRequest.getBigBookPlainEnglishQty() > 0) {
       request = request + """
           <b>Big Book plain English Qty:</b>  %d<br/><br/>
           """.formatted(literatureRequest.getBigBookPlainEnglishQty());
     }
-    if (literatureRequest.getABookOfFellowshipQty() > 0) {
-      request = request + """
-          <b>A Book of Fellowship - 90 Years of Sharing Love and Service Qty:</b>  %d<br/><br/>
-          """.formatted(literatureRequest.getABookOfFellowshipQty());
-    }
-    if (literatureRequest.getGrapevineQty() > 0) {
-      request = request + """
-          <b>Grapevine Qty:</b>  %d<br/><br/>
-          """.formatted(literatureRequest.getGrapevineQty());
-    }
-    if (literatureRequest.getLaVinaQty() > 0) {
-      request = request + """
-          <b>La Vina Qty:</b>  %d<br/><br/>
-          """.formatted(literatureRequest.getLaVinaQty());
-    }
     if (literatureRequest.getNewcomerPacketsQty() > 0) {
       request = request + """
           <b>New Comer Packets Qty:</b>  %d<br/><br/>
           """.formatted(literatureRequest.getNewcomerPacketsQty());
     }
-    if (literatureRequest.getLiteratureRackWithPamphletsQty() > 0) {
+    if (literatureRequest.getBigBookSpanishQty() > 0) {
       request = request + """
-          <b>Literature Rack with Pamphlets Qty:</b>  %d<br/><br/>
-          """.formatted(literatureRequest.getLiteratureRackWithPamphletsQty());
+          <b>Alcoholic Anonymous Spanish Qty:</b>  %d<br/><br/>
+          """.formatted(literatureRequest.getBigBookSpanishQty());
+    }
+    if (literatureRequest.getStepsAndTraditions12x12SpanishQty() > 0) {
+      request = request + """
+          <b>12 Steps and 12 Traditions Spanish Qty:</b>  %d<br/><br/>
+          """.formatted(literatureRequest.getStepsAndTraditions12x12SpanishQty());
     }
     if (literatureRequest.getOtherQty() > 0) {
       request = request + """
