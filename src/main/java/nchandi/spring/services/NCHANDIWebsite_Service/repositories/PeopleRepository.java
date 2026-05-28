@@ -10,4 +10,6 @@ public interface PeopleRepository extends JpaRepository<People, String> {
   List<People> findByFirstNameAndLastName(String firstName, String lastName);
 
   List<People> findByUsername(String username);
+
+  List<People> findByEmail(String email);
 }

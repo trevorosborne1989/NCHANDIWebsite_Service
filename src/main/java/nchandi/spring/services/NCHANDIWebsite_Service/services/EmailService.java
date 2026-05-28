@@ -1,5 +1,8 @@
 package nchandi.spring.services.NCHANDIWebsite_Service.services;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -33,6 +36,9 @@ public class EmailService {
 
   @Value("${zoho.password}")
   private String zohoPassword;
+
+  @Value("${ui.url}")
+  private String uiUrl;
 
   public LiteratureRequest emailLiteratureRequest (LiteratureRequest literatureRequest) throws MessagingException {
 
@@ -265,5 +271,55 @@ public class EmailService {
     Transport.send(message);
 
 		return pending;
+	}
+
+  public void emailPasswordReset (String personEmail, String token) throws MessagingException, UnsupportedEncodingException {
+
+    Properties prop = new Properties();
+    prop.put("mail.transport.protocol", "smtp");
+    prop.put("mail.smtp.auth", true);
+    prop.put("mail.smtp.starttls.enable", "true");
+    prop.put("mail.smtp.host", "smtppro.zoho.com");
+    prop.put("mail.smtp.port", "587");
+    prop.put("mail.smtp.ssl.trust", "smtppro.zoho.com");
+
+    Session session = Session.getInstance(prop, new Authenticator() {
+      @Override
+      protected PasswordAuthentication getPasswordAuthentication() {
+          return new PasswordAuthentication(zohoUsername, zohoPassword);
+      }
+    });
+
+    MimeMessage message = new MimeMessage(session);
+    message.setFrom(new InternetAddress("technology@nchandi.org"));
+    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(personEmail));
+    message.setSubject("NCHANDI Website Password Request");
+
+    String baseUrl = uiUrl + "/reset-password";
+    String encodedToken = URLEncoder.encode(token, StandardCharsets.UTF_8.toString());
+    String resetUrl = baseUrl + "?token=" + encodedToken;
+
+    String msg =
+    """
+    <br/>
+    ~A password request has been initiated on the NCHANDI Website for the account associated to this email.<br/><br/><br/>
+
+    ---------------------------<br/><br/><br/>
+
+    <b>To finish your password request, please click on the following link: </b> %s<br/><br/><br/>
+
+    ---------------------------<br/><br/><br/>
+    """.formatted(resetUrl);
+
+    MimeBodyPart mimeBodyPart = new MimeBodyPart();
+    mimeBodyPart.setContent(msg, "text/html; charset=utf-8");
+
+    Multipart multipart = new MimeMultipart();
+    multipart.addBodyPart(mimeBodyPart);
+
+    message.setContent(multipart);
+
+    Transport.send(message);
+
 	}
 }

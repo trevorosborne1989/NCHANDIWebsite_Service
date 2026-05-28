@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import nchandi.spring.services.NCHANDIWebsite_Service.domain.People;
@@ -19,15 +20,23 @@ import nchandi.spring.services.NCHANDIWebsite_Service.utils.PersonComparator;
 public class PeopleService {
 
 	@Autowired
+	EmailService emailService;
+
+	@Autowired
 	PeopleRepository peopleRepo;
+
+	@Autowired
+	PasswordResetTokenService passwordResetTokenService;
 
 	Logger logger = LoggerFactory.getLogger("nchandi.spring.services.NCHANDIWebsite_Service.services.PeopleService");
 
 	public List<People> getPeople() {
 		List<People> people = peopleRepo.findAll();
-				System.out.println(people.get(0));
 		if (people.size() > 0) {
 			Collections.sort(people, new PersonComparator());
+			for (People person : people) {
+				person.setPassword(null);
+			}
 			return people;
 		} else {
 			throw new ResourceNotFoundException("No Records Found");
@@ -35,23 +44,25 @@ public class PeopleService {
 	}
 
 	public Optional<People> getPeopleById(String personId) {
-
 		Optional<People> people = peopleRepo.findById(personId);
-		if (people == null) {
+		if (people.isEmpty()) {
 			throw new ResourceNotFoundException("People with ID:" + personId + " not found.");
 		}
-		return people;
+		Optional<People> result = people.map(obj -> {
+			obj.setPassword(null);
+			return obj;
+		});
+		return result;
 	}
 
 	public People savePerson (People people) {
-
 		List<People> existingPersons = peopleRepo.findByFirstNameAndLastName(people.getFirstName(), people.getLastName());
 		if (existingPersons.size() > 0) {
 			People existingPerson = existingPersons.get(0);
 			people.setId(existingPerson.getId());
 			return updatePerson(existingPerson.getId(), people);
 		}
-		return peopleRepo.save(people);
+		return peopleRepo.save(people).setPassword(null);
 	}
 
 	public People updatePerson(String personId, People people) {
@@ -61,7 +72,13 @@ public class PeopleService {
 		} else if (existingPeople.isEmpty()) {
 		throw new ResourceNotFoundException("Person with ID:" + personId + " not found.");
 		}
-		return peopleRepo.save(people);
+		if (people.getPassword() != null) {
+			// Hashing
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+			String hashedPassword = encoder.encode(people.getPassword());
+			people.setPassword(hashedPassword);
+		}
+		return peopleRepo.save(people).setPassword(null);
 	}
 
 	public void deletePeople(String personId) {

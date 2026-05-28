@@ -127,7 +127,8 @@ public class People {
     return password;
   }
 
-  public void setPassword(String password) {
+  public People setPassword(String password) {
     this.password = password;
+    return this;
   }
 }
