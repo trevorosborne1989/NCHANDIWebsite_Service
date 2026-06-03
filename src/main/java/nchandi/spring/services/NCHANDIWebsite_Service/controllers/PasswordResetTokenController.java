@@ -28,7 +28,7 @@ public class PasswordResetTokenController {
 		return passwordResetTokenService.getPasswordResetTokenByToken(token);
   }
 
-	@RequestMapping(value = "/password-reset-tokens/{personEmail}", method = RequestMethod.POST)
+	@RequestMapping(value = "/password-reset-tokens/reset-password/{personEmail}", method = RequestMethod.POST)
 	public void resetPassword(
 		@PathVariable String personEmail,
 		HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
